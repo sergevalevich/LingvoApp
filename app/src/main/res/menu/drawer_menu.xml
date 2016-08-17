@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/group_feature"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/drawer_achievements"
+            android:title="@string/nav_drawer_achievements"
+            android:icon="@mipmap/ic_launcher"
+            android:checked="true">
+        </item>
+
+        <item
+            android:id="@+id/drawer_cards"
+            android:title="@string/nav_drawer_cards"
+            android:icon="@mipmap/ic_launcher">
+        </item>
+
+        <item
+            android:id="@+id/drawer_phrasebook"
+            android:title="@string/nav_drawer_phrasebook"
+            android:icon="@mipmap/ic_launcher">
+        </item>
+
+        <item
+            android:id="@+id/drawer_dictionary"
+            android:title="@string/nav_drawer_dictionary"
+            android:icon="@mipmap/ic_launcher">
+        </item>
+
+        <item
+            android:id="@+id/drawer_trainings"
+            android:title="@string/nav_drawer_trainings"
+            android:icon="@mipmap/ic_launcher">
+        </item>
+
+        <item
+            android:id="@+id/drawer_settings"
+            android:title="@string/nav_drawer_settings"
+            android:icon="@mipmap/ic_launcher">
+        </item>
+
+        <item
+            android:id="@+id/drawer_exit"
+            android:title="@string/nav_drawer_exit"
+            android:icon="@mipmap/ic_launcher">
+        </item>
+
+    </group>
+
+</menu>

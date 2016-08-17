@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/drawer_header_height">
+
+    <ImageView
+        android:id="@+id/profile_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/profile_image_margin"
+        android:layout_marginLeft="@dimen/profile_image_margin"
+        android:layout_marginTop="@dimen/profile_image_margin"
+        android:src = "@drawable/man"/>
+
+    <TextView
+        android:id="@+id/userName"
+        android:textSize="@dimen/primary_textSize_large"
+        android:maxLength="25"
+        android:maxLines="2"
+        android:layout_marginStart="@dimen/user_info_side_margin"
+        android:layout_marginLeft="@dimen/user_info_side_margin"
+        android:layout_marginEnd="@dimen/user_info_side_margin"
+        android:layout_marginRight="@dimen/user_info_side_margin"
+        android:lineSpacingMultiplier="0.6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/profile_image"
+        android:layout_toRightOf="@+id/profile_image"
+        android:text = "@string/stub_username"
+        android:layout_alignTop="@+id/profile_image"/>
+
+    <TextView
+        android:id="@+id/profile_info"
+        android:textSize="@dimen/primary_textSize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/user_info_side_margin"
+        android:layout_marginLeft="@dimen/user_info_side_margin"
+        android:layout_marginEnd="@dimen/user_info_side_margin"
+        android:layout_marginRight="@dimen/user_info_side_margin"
+        android:singleLine="true"
+        android:maxLength="25"
+        android:layout_toEndOf="@+id/profile_image"
+        android:layout_toRightOf="@+id/profile_image"
+        android:text = "@string/stub_profileInfo"
+        android:layout_alignBottom="@+id/profile_image"/>
+
+</RelativeLayout>
