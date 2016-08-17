@@ -27,4 +27,8 @@
     <string name="age">Age</string>
     <string name="password_old">Old password</string>
     <string name="save_button_title">Сохранить</string>
+    <string name="action_edit">Edit</string>
+    <string name="profile_details">Профиль</string>
+    <string name="stub_phrase_category_examples">Приветствие, комплименты</string>
+    <string name="stud_phrase_category">ПОВСЕДНЕВНЫЕ ФРАЗЫ</string>
 </resources>

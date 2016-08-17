@@ -4,5 +4,5 @@
           android:color="@color/colorAccent">
 
     </item>
-    <item android:drawable = "@color/colorText" android:color="@color/colorText" />
+    <item android:drawable = "@color/colorTextDark" android:color="@color/colorTextDark" />
 </selector>

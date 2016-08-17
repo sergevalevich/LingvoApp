@@ -5,40 +5,44 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.valevich.lingvoapp.R;
-import com.valevich.lingvoapp.ui.recyclerview.adapters.PhraseBookAdapter;
+import com.valevich.lingvoapp.ui.recyclerview.adapters.CardCategoriesAdapter;
+import com.valevich.lingvoapp.utils.SpacesItemDecoration;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
-@EFragment(R.layout.fragment_phrasebook)
-public class PhraseBookFragment extends Fragment {
-    private static final int PHRASE_BOOK_LOADER_ID = 1;
+@EFragment(R.layout.fragment_card_categories)
+public class CardCategoriesFragment extends Fragment {
 
-    @ViewById(R.id.phrase_category_list)
+    private static final int CATEGORIES_LOADER_ID = 0;
+
+    @ViewById(R.id.grid)
     RecyclerView mRecyclerView;
 
     @Bean
-    PhraseBookAdapter mPhraseBookAdapter;
+    CardCategoriesAdapter mCardCategoriesAdapter;
 
     @AfterViews
     void setUpRecyclerView() {
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
+        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.grid_spacing);
+        mRecyclerView.addItemDecoration(new SpacesItemDecoration(spacingInPixels));
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        loadPhraseBook();
+        loadCategories();
     }
 
-    private void loadPhraseBook() {
-        getLoaderManager().restartLoader(PHRASE_BOOK_LOADER_ID,
+    private void loadCategories() {
+        getLoaderManager().restartLoader(CATEGORIES_LOADER_ID,
                 null,
                 new LoaderManager.LoaderCallbacks() {
                     @Override
@@ -46,7 +50,7 @@ public class PhraseBookFragment extends Fragment {
                         final AsyncTaskLoader loader = new AsyncTaskLoader(getActivity()) {
                             @Override
                             public Object loadInBackground() {
-                                mPhraseBookAdapter.initAdapter();
+                                mCardCategoriesAdapter.initAdapter();
                                 return null;
                             }
                         };
@@ -56,7 +60,7 @@ public class PhraseBookFragment extends Fragment {
 
                     @Override
                     public void onLoadFinished(Loader loader, Object data) {
-                        mRecyclerView.setAdapter(mPhraseBookAdapter);
+                        mRecyclerView.setAdapter(mCardCategoriesAdapter);
                     }
 
                     @Override

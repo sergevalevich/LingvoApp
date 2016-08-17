@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/phrase_category_item_height"
+                android:paddingStart="@dimen/phrase_category_item_side_padding"
+                android:paddingLeft="@dimen/phrase_category_item_side_padding"
+                android:paddingEnd="@dimen/phrase_category_item_side_padding"
+                android:paddingRight="@dimen/phrase_category_item_side_padding">
+
+    <ImageView
+        android:id="@+id/phrase_category_icon"
+        android:layout_width="@dimen/phrase_category_item_size"
+        android:layout_height="@dimen/phrase_category_item_size"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/phrase_category_end_margin"
+        android:layout_marginRight="@dimen/phrase_category_end_margin"
+        android:src = "@drawable/hello"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/phrase_category_icon"
+        android:layout_toRightOf="@+id/phrase_category_icon"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/phrase_category_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/primary_textSize"
+            android:singleLine="true"
+            android:text = "@string/stud_phrase_category"/>
+
+        <TextView
+            android:id="@+id/phrase_category_examples"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/secondary_textSize"
+            android:singleLine="true"
+            android:text = "@string/stub_phrase_category_examples"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

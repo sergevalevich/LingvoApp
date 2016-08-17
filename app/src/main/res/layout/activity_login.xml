@@ -25,7 +25,13 @@
         <EditText
             android:id="@+id/login"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/field_height"
+            android:layout_marginBottom="@dimen/fields_vertical_margin"
+            android:background="@drawable/bg_fields"
+            android:paddingLeft="@dimen/hint_padding"
+            android:paddingStart="@dimen/hint_padding"
+            android:paddingRight="@dimen/hint_padding"
+            android:paddingEnd="@dimen/hint_padding"
             android:inputType="text"
             android:maxLength="10"
             android:hint="@string/login"
@@ -34,7 +40,13 @@
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/field_height"
+            android:layout_marginBottom="@dimen/fields_vertical_margin"
+            android:background="@drawable/bg_fields"
+            android:paddingLeft="@dimen/hint_padding"
+            android:paddingStart="@dimen/hint_padding"
+            android:paddingRight="@dimen/hint_padding"
+            android:paddingEnd="@dimen/hint_padding"
             android:inputType="textPassword"
             android:maxLength="10"
             android:hint="@string/password"
@@ -43,7 +55,8 @@
         <Button
             android:id="@+id/login_button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/field_height"
+            android:background="@drawable/bg_fields"
             android:text="@string/log_in"/>
 
     </LinearLayout>

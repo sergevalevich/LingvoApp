@@ -14,24 +14,27 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.valevich.lingvoapp.R;
 import com.valevich.lingvoapp.eventbus.EventBus;
 import com.valevich.lingvoapp.ui.fragments.AchievementsFragment_;
-import com.valevich.lingvoapp.ui.fragments.CardsFragment_;
+import com.valevich.lingvoapp.ui.fragments.CardCategoriesFragment_;
 import com.valevich.lingvoapp.ui.fragments.DictionaryFragment_;
 import com.valevich.lingvoapp.ui.fragments.PhraseBookFragment_;
+import com.valevich.lingvoapp.ui.fragments.ProfileDetailsFragment_;
 import com.valevich.lingvoapp.ui.fragments.SettingsFragment_;
 import com.valevich.lingvoapp.ui.fragments.TrainingsFragment_;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EActivity;
+import org.androidannotations.annotations.OptionsMenu;
 import org.androidannotations.annotations.ViewById;
 import org.androidannotations.annotations.res.StringRes;
 
-
+@OptionsMenu(R.menu.menu_main)
 @EActivity
 public class MainActivity extends AppCompatActivity
         implements FragmentManager.OnBackStackChangedListener {
@@ -62,6 +65,9 @@ public class MainActivity extends AppCompatActivity
 
     @StringRes(R.string.nav_drawer_settings)
     String mSettingsTitle;
+
+    @StringRes(R.string.profile_details)
+    String mProfileDetailsTitle;
 
     @Bean
     EventBus mEventBus;
@@ -135,7 +141,7 @@ public class MainActivity extends AppCompatActivity
                         replaceFragment(new AchievementsFragment_());
                         break;
                     case R.id.drawer_cards:
-                        replaceFragment(new CardsFragment_());
+                        replaceFragment(new CardCategoriesFragment_());
                         break;
                     case R.id.drawer_phrasebook:
                         replaceFragment(new PhraseBookFragment_());
@@ -162,7 +168,7 @@ public class MainActivity extends AppCompatActivity
         if (backStackEntryName.equals(AchievementsFragment_.class.getName())) {
             setTitle(mAchievementsTitle);
             mNavigationView.setCheckedItem(R.id.drawer_achievements);
-        } else if (backStackEntryName.equals(CardsFragment_.class.getName())) {
+        } else if (backStackEntryName.equals(CardCategoriesFragment_.class.getName())) {
             setTitle(mCardsTitle);
             mNavigationView.setCheckedItem(R.id.drawer_cards);
         } else if (backStackEntryName.equals(SettingsFragment_.class.getName())) {
@@ -177,11 +183,14 @@ public class MainActivity extends AppCompatActivity
         } else if (backStackEntryName.equals(TrainingsFragment_.class.getName())){
             setTitle(mTrainingsTitle);
             mNavigationView.setCheckedItem(R.id.drawer_trainings);
+        } else {
+            setTitle(mProfileDetailsTitle);
         }
     }
 
     private void setupDrawerLayout() {
         setupNavigationContent();
+        setUpProfileImage();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this
                 , mDrawerLayout
@@ -210,6 +219,20 @@ public class MainActivity extends AppCompatActivity
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
         }
+    }
+
+    private void setUpProfileImage() {
+        View header = mNavigationView.getHeaderView(0);
+        ImageView profileImage = (ImageView) header.findViewById(R.id.profile_image);
+        profileImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (mDrawerLayout != null) {
+                    mDrawerLayout.closeDrawer(GravityCompat.START);
+                }
+                replaceFragment(new ProfileDetailsFragment_());
+            }
+        });
     }
 
     private void replaceFragment(Fragment fragment) {

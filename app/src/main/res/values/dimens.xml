@@ -8,7 +8,23 @@
     <dimen name="secondary_textSize">14sp</dimen>
     <dimen name="drawer_header_height">108dp</dimen>
     <dimen name="user_info_side_margin">8dp</dimen>
-    <dimen name="drawer_menu_width">320dp</dimen>
+    <dimen name="drawer_menu_width">240dp</dimen>
     <dimen name="login_general_vertical_padding">32dp</dimen>
     <dimen name="login_input_area_top_margin">64dp</dimen>
+    <dimen name="fields_corner_radius">5dp</dimen>
+    <dimen name="fields_vertical_margin">12dp</dimen>
+    <dimen name="field_height">32dp</dimen>
+    <dimen name="hint_padding">8dp</dimen>
+    <dimen name="grid_item_action_area_height">48dp</dimen>
+    <dimen name="action_area_vertical_padding">4dp</dimen>
+    <dimen name="action_area_side_padding">16dp</dimen>
+    <dimen name="progress_bar_corner_radius">5dp</dimen>
+    <dimen name="category_item_size">124dp</dimen>
+    <dimen name="grid_spacing">16dp</dimen>
+    <dimen name="action_are_bottom_padding">4dp</dimen>
+    <dimen name="list_images_corner_radius">4dp</dimen>
+    <dimen name="phrase_category_item_height">56dp</dimen>
+    <dimen name="phrase_category_end_margin">8dp</dimen>
+    <dimen name="phrase_category_item_size">48dp</dimen>
+    <dimen name="phrase_category_item_side_padding">16dp</dimen>
 </resources>
