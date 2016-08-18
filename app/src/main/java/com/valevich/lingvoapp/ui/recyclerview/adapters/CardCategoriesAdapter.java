@@ -4,7 +4,7 @@ package com.valevich.lingvoapp.ui.recyclerview.adapters;
 import android.content.Context;
 import android.view.ViewGroup;
 
-import com.valevich.lingvoapp.model.CardCategory;
+import com.valevich.lingvoapp.stubmodel.CardCategory;
 import com.valevich.lingvoapp.ui.recyclerview.ViewWrapper;
 import com.valevich.lingvoapp.ui.recyclerview.views.CardCategoryItemView;
 import com.valevich.lingvoapp.ui.recyclerview.views.CardCategoryItemView_;

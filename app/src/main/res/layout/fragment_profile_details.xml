@@ -13,15 +13,13 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="@dimen/fields_vertical_margin"
-        android:layout_marginTop="@dimen/fields_vertical_margin"
-        android:background="@drawable/bg_fields">
+        android:layout_marginTop="@dimen/fields_vertical_margin">
 
         <ImageView
             android:id="@+id/profile_image"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:src="@drawable/man"/>
+            android:layout_width="@dimen/profile_image_size"
+            android:layout_height="@dimen/profile_image_size"
+            android:layout_gravity="center"/>
 
         <ImageView
             android:id="@+id/plus"

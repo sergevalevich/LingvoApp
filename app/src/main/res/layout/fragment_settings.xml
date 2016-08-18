@@ -1,7 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
+              xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
-              android:layout_height="match_parent">
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:paddingEnd="@dimen/login_general_vertical_padding"
+              android:paddingLeft="@dimen/login_general_vertical_padding"
+              android:paddingRight="@dimen/login_general_vertical_padding"
+              android:paddingStart="@dimen/login_general_vertical_padding"
+              android:paddingTop="@dimen/setting_top_padding">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/fields_vertical_margin">
+
+        <TextView
+            android:id="@+id/ui_lang_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/field_height"
+            android:background="@drawable/bg_fields"
+            android:gravity="center_vertical"
+            android:paddingEnd="@dimen/hint_padding"
+            android:paddingLeft="@dimen/hint_padding"
+            android:paddingRight="@dimen/hint_padding"
+            android:paddingStart="@dimen/hint_padding"
+            android:singleLine="true"
+            android:textSize="@dimen/primary_textSize"
+            tools:text="Язык интерфейса:Russian"/>
+
+
+        <ImageView
+            android:id="@+id/arrow_ui"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/settings_arrow_size"
+            android:src = "@drawable/arrow_left"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="@dimen/hint_padding"
+            android:layout_marginRight="@dimen/hint_padding"/>
+
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/fields_vertical_margin">
+
+        <TextView
+            android:id="@+id/studied_lang_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/field_height"
+            android:background="@drawable/bg_fields"
+            android:gravity="center_vertical"
+            android:paddingEnd="@dimen/hint_padding"
+            android:paddingLeft="@dimen/hint_padding"
+            android:paddingRight="@dimen/hint_padding"
+            android:paddingStart="@dimen/hint_padding"
+            android:singleLine="true"
+            android:textSize="@dimen/primary_textSize"
+            tools:text="Изучаемый язык:English"/>
+
+        <ImageView
+            android:id="@+id/arrow_study"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/settings_arrow_size"
+            android:src = "@drawable/arrow_left"
+            android:layout_gravity="end|center_vertical"
+            android:layout_marginEnd="@dimen/hint_padding"
+            android:layout_marginRight="@dimen/hint_padding"/>
+
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/field_height"
+        android:background="@drawable/bg_fields"
+        android:text="@string/save_button_title"/>
 
 </LinearLayout>

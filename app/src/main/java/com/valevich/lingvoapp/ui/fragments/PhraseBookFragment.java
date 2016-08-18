@@ -10,6 +10,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.valevich.lingvoapp.R;
 import com.valevich.lingvoapp.ui.recyclerview.adapters.PhraseBookAdapter;
+import com.valevich.lingvoapp.utils.ListItemDecoration;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -29,6 +30,8 @@ public class PhraseBookFragment extends Fragment {
     @AfterViews
     void setUpRecyclerView() {
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecyclerView.addItemDecoration(new ListItemDecoration(getContext(),
+                LinearLayoutManager.VERTICAL ));
     }
 
     @Override

@@ -10,7 +10,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.valevich.lingvoapp.R;
 import com.valevich.lingvoapp.ui.recyclerview.adapters.CardCategoriesAdapter;
-import com.valevich.lingvoapp.utils.SpacesItemDecoration;
+import com.valevich.lingvoapp.utils.ListItemDecoration;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -29,16 +29,20 @@ public class CardCategoriesFragment extends Fragment {
     CardCategoriesAdapter mCardCategoriesAdapter;
 
     @AfterViews
-    void setUpRecyclerView() {
-        mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
-        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.grid_spacing);
-        mRecyclerView.addItemDecoration(new SpacesItemDecoration(spacingInPixels));
+    void setUpViews() {
+        setUpRecyclerView();
     }
 
     @Override
     public void onResume() {
         super.onResume();
         loadCategories();
+    }
+
+    private void setUpRecyclerView() {
+        mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
+        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.grid_spacing);
+        mRecyclerView.addItemDecoration(new ListItemDecoration(spacingInPixels));
     }
 
     private void loadCategories() {

@@ -1,4 +1,4 @@
-package com.valevich.lingvoapp.model;
+package com.valevich.lingvoapp.stubmodel;
 
 import java.util.ArrayList;
 import java.util.Arrays;

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="@dimen/category_item_size"
-             android:layout_height="@dimen/category_item_size"
-             android:orientation="vertical">
+             android:layout_width="@dimen/grid_item_size"
+             android:layout_height="@dimen/grid_item_size"
+             android:layout_gravity="center">
 
     <ImageView
         android:id="@+id/image"
@@ -15,15 +15,15 @@
     <LinearLayout
         android:id="@+id/actions"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/grid_item_action_area_height"
+        android:layout_height="@dimen/grid_item_support_area_height"
         android:layout_gravity="bottom"
-        android:background="@color/colorActionArea"
+        android:background="@drawable/action_area"
         android:orientation="vertical"
-        android:paddingBottom="@dimen/action_are_bottom_padding"
-        android:paddingEnd="@dimen/action_area_side_padding"
-        android:paddingLeft="@dimen/action_area_side_padding"
-        android:paddingRight="@dimen/action_area_side_padding"
-        android:paddingStart="@dimen/action_area_side_padding">
+        android:paddingBottom="@dimen/support_area_bottom_padding"
+        android:paddingEnd="@dimen/support_area_side_padding"
+        android:paddingLeft="@dimen/support_area_side_padding"
+        android:paddingRight="@dimen/support_area_side_padding"
+        android:paddingStart="@dimen/support_area_side_padding">
 
         <TextView
             android:id="@+id/category_name"
@@ -41,7 +41,7 @@
             style="@android:style/Widget.ProgressBar.Horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/progress_bar_top_margin"
             android:layout_weight="1"
             android:progressDrawable="@drawable/progress_bar"/>
 

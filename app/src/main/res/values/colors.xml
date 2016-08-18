@@ -7,4 +7,5 @@
     <color name="colorTextLight">#ffffff</color>
     <color name="colorFields">#ffffff</color>
     <color name="colorActionArea">#80000000</color>
+    <color name="colorPlaceholder">#80000000</color>
 </resources>

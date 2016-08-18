@@ -3,7 +3,7 @@ package com.valevich.lingvoapp.ui.recyclerview.adapters;
 import android.content.Context;
 import android.view.ViewGroup;
 
-import com.valevich.lingvoapp.model.PhraseCategory;
+import com.valevich.lingvoapp.stubmodel.PhraseCategory;
 import com.valevich.lingvoapp.ui.recyclerview.ViewWrapper;
 import com.valevich.lingvoapp.ui.recyclerview.views.PhraseBookItemView;
 import com.valevich.lingvoapp.ui.recyclerview.views.PhraseBookItemView_;

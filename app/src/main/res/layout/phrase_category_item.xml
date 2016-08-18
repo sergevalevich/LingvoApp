@@ -18,6 +18,7 @@
         android:src = "@drawable/hello"/>
 
     <LinearLayout
+        android:id="@+id/phrase_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toEndOf="@+id/phrase_category_icon"
@@ -42,5 +43,14 @@
             android:text = "@string/stub_phrase_category_examples"/>
 
     </LinearLayout>
+
+    <ImageView
+        android:id="@+id/right_arrow"
+        android:layout_width= "@dimen/phrase_book_arrow_size"
+        android:layout_height="@dimen/phrase_book_arrow_size"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:src = "@drawable/arrow_talker"/>
 
 </RelativeLayout>

@@ -7,7 +7,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.valevich.lingvoapp.R;
-import com.valevich.lingvoapp.model.CardCategory;
+import com.valevich.lingvoapp.stubmodel.CardCategory;
 import com.valevich.lingvoapp.ui.recyclerview.utils.ViewBinder;
 import com.valevich.lingvoapp.utils.ImageLoader;
 
@@ -15,7 +15,7 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
-@EViewGroup(R.layout.grid_item)
+@EViewGroup(R.layout.grid_item_card)
 public class CardCategoryItemView extends FrameLayout implements ViewBinder<CardCategory> {
 
     @ViewById(R.id.image)

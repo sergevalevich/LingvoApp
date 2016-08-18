@@ -31,4 +31,6 @@
     <string name="profile_details">Профиль</string>
     <string name="stub_phrase_category_examples">Приветствие, комплименты</string>
     <string name="stud_phrase_category">ПОВСЕДНЕВНЫЕ ФРАЗЫ</string>
+    <string name="stub_dictionary_text">ability</string>
+    <string name="search_hint">search</string>
 </resources>

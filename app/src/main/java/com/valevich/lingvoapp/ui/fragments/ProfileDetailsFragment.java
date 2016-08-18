@@ -9,8 +9,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.valevich.lingvoapp.R;
+import com.valevich.lingvoapp.utils.ImageLoader;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.OptionsItem;
 import org.androidannotations.annotations.OptionsMenu;
@@ -51,6 +53,9 @@ public class ProfileDetailsFragment extends Fragment{
     @ViewById(R.id.save)
     Button mSaveButton;
 
+    @Bean
+    ImageLoader mImageLoader;
+
     @OptionsMenuItem(R.id.action_edit)
     MenuItem mEditMenuIcon;
 
@@ -65,6 +70,11 @@ public class ProfileDetailsFragment extends Fragment{
     @AfterViews
     void setUpViews() {
         blockInput();
+        loadProfilePicture();
+    }
+
+    private void loadProfilePicture() {
+        mImageLoader.loadRoundedImageByResId(R.drawable.man,R.drawable.man,mProfileImage);
     }
 
     private void blockInput() {
