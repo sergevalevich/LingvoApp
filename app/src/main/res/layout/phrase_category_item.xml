@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical"
+                xmlns:tools="http://schemas.android.com/tools"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/phrase_category_item_height"
-                android:paddingStart="@dimen/phrase_category_item_side_padding"
-                android:paddingLeft="@dimen/phrase_category_item_side_padding"
+                android:background="@color/color_list_semi_transparent"
+                android:orientation="vertical"
                 android:paddingEnd="@dimen/phrase_category_item_side_padding"
-                android:paddingRight="@dimen/phrase_category_item_side_padding">
+                android:paddingLeft="@dimen/phrase_category_item_side_padding"
+                android:paddingRight="@dimen/phrase_category_item_side_padding"
+                android:paddingStart="@dimen/phrase_category_item_side_padding">
 
     <ImageView
         android:id="@+id/phrase_category_icon"
@@ -15,42 +17,42 @@
         android:layout_centerVertical="true"
         android:layout_marginEnd="@dimen/phrase_category_end_margin"
         android:layout_marginRight="@dimen/phrase_category_end_margin"
-        android:src = "@drawable/hello"/>
+        tools:src="@drawable/hello"/>
 
     <LinearLayout
         android:id="@+id/phrase_info"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/phrase_category_icon"
         android:layout_toRightOf="@+id/phrase_category_icon"
-        android:layout_centerVertical="true"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/phrase_category_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/primary_textSize"
             android:singleLine="true"
-            android:text = "@string/stud_phrase_category"/>
+            android:textSize="@dimen/primary_textSize"
+            tools:text="@string/stud_phrase_category"/>
 
         <TextView
             android:id="@+id/phrase_category_examples"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/secondary_textSize"
             android:singleLine="true"
-            android:text = "@string/stub_phrase_category_examples"/>
+            android:textSize="@dimen/secondary_textSize"
+            tools:text="@string/stub_phrase_category_examples"/>
 
     </LinearLayout>
 
     <ImageView
         android:id="@+id/right_arrow"
-        android:layout_width= "@dimen/phrase_book_arrow_size"
+        android:layout_width="@dimen/phrase_book_arrow_size"
         android:layout_height="@dimen/phrase_book_arrow_size"
-        android:layout_centerVertical="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:src = "@drawable/arrow_talker"/>
+        android:layout_centerVertical="true"
+        android:src="@drawable/arrow_talker"/>
 
 </RelativeLayout>

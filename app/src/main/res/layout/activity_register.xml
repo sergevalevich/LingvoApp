@@ -2,12 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:background="@drawable/fon_leves"
                 android:padding="@dimen/login_general_vertical_padding">
 
     <TextView
         android:id="@+id/title"
         android:text="@string/app_title"
         android:textSize="@dimen/primary_textSize_large"
+        android:textColor="@color/colorTextLight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"/>
@@ -25,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/field_height"
             android:layout_marginBottom="@dimen/fields_vertical_margin"
-            android:background="@drawable/bg_fields"
+            android:background="@drawable/bg_round"
             android:paddingLeft="@dimen/hint_padding"
             android:paddingStart="@dimen/hint_padding"
             android:paddingRight="@dimen/hint_padding"
@@ -40,7 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/field_height"
             android:layout_marginBottom="@dimen/fields_vertical_margin"
-            android:background="@drawable/bg_fields"
+            android:background="@drawable/bg_round"
             android:paddingLeft="@dimen/hint_padding"
             android:paddingStart="@dimen/hint_padding"
             android:paddingRight="@dimen/hint_padding"
@@ -55,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/field_height"
             android:layout_marginBottom="@dimen/fields_vertical_margin"
-            android:background="@drawable/bg_fields"
+            android:background="@drawable/bg_round"
             android:paddingLeft="@dimen/hint_padding"
             android:paddingStart="@dimen/hint_padding"
             android:paddingRight="@dimen/hint_padding"
@@ -70,7 +72,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/field_height"
             android:layout_marginBottom="@dimen/fields_vertical_margin"
-            android:background="@drawable/bg_fields"
+            android:background="@drawable/bg_round"
             android:paddingLeft="@dimen/hint_padding"
             android:paddingStart="@dimen/hint_padding"
             android:paddingRight="@dimen/hint_padding"
@@ -85,7 +87,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/field_height"
             android:layout_marginBottom="@dimen/fields_vertical_margin"
-            android:background="@drawable/bg_fields"
+            android:background="@drawable/bg_round"
             android:paddingLeft="@dimen/hint_padding"
             android:paddingStart="@dimen/hint_padding"
             android:paddingRight="@dimen/hint_padding"
@@ -100,7 +102,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/field_height"
             android:layout_marginBottom="@dimen/fields_vertical_margin"
-            android:background="@drawable/bg_fields"
+            android:background="@drawable/bg_round"
             android:paddingLeft="@dimen/hint_padding"
             android:paddingStart="@dimen/hint_padding"
             android:paddingRight="@dimen/hint_padding"
@@ -115,7 +117,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/field_height"
             android:text="@string/register"
-            android:background="@drawable/bg_fields"/>
+            android:background="@drawable/bg_round"/>
 
     </LinearLayout>
 

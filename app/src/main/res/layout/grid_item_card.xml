@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
              xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="@dimen/grid_item_size"
-             android:layout_height="@dimen/grid_item_size"
+             android:layout_width="@dimen/grid_item_card_size"
+             android:layout_height="@dimen/grid_item_card_size"
              android:layout_gravity="center">
 
     <ImageView
@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center_horizontal"
+        android:adjustViewBounds="true"
         tools:src="@drawable/panda"/>
 
     <LinearLayout
@@ -18,12 +19,7 @@
         android:layout_height="@dimen/grid_item_support_area_height"
         android:layout_gravity="bottom"
         android:background="@drawable/action_area"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/support_area_bottom_padding"
-        android:paddingEnd="@dimen/support_area_side_padding"
-        android:paddingLeft="@dimen/support_area_side_padding"
-        android:paddingRight="@dimen/support_area_side_padding"
-        android:paddingStart="@dimen/support_area_side_padding">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/category_name"
@@ -36,14 +32,40 @@
             android:maxLength="15"
             tools:text="Животные"/>
 
-        <ProgressBar
-            android:id="@+id/progress"
-            style="@android:style/Widget.ProgressBar.Horizontal"
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/progress_bar_top_margin"
-            android:layout_weight="1"
-            android:progressDrawable="@drawable/progress_bar"/>
+            android:layout_marginEnd="@dimen/support_area_side_padding"
+            android:layout_marginRight="@dimen/support_area_side_padding"
+            android:layout_marginStart="@dimen/support_area_side_padding"
+            android:layout_marginLeft="@dimen/support_area_side_padding"
+            android:layout_marginBottom="@dimen/progress_bottom_margin"
+            android:layout_weight="1">
+
+
+            <ProgressBar
+                android:id="@+id/progress"
+                style="@android:style/Widget.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:progressDrawable="@drawable/progress_bar"
+                android:background="@drawable/bg_round"/>
+
+
+            <TextView
+                android:id="@+id/progress_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorTextDark"
+                android:textSize="@dimen/primary_textSize"
+                android:singleLine="true"
+                android:gravity="center_horizontal"
+                android:background="@color/colorTransparent"
+                android:maxLength="4"
+                tools:text = "100%"/>
+
+        </FrameLayout>
 
     </LinearLayout>
 

@@ -3,6 +3,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
+                android:background="@drawable/fon_leves"
                 android:padding="@dimen/login_general_vertical_padding">
 
     <TextView
@@ -11,6 +12,7 @@
         android:textSize="@dimen/primary_textSize_large"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorTextLight"
         android:gravity="center"/>
 
     <LinearLayout
@@ -26,7 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/field_height"
             android:layout_marginBottom="@dimen/fields_vertical_margin"
-            android:background="@drawable/bg_fields"
+            android:background="@drawable/bg_round"
             android:paddingLeft="@dimen/hint_padding"
             android:paddingStart="@dimen/hint_padding"
             android:paddingRight="@dimen/hint_padding"
@@ -40,7 +42,7 @@
             android:id="@+id/recover_button"
             android:layout_width="match_parent"
             android:layout_height="@dimen/field_height"
-            android:background="@drawable/bg_fields"
+            android:background="@drawable/bg_round"
             android:text="@string/recover"/>
 
     </LinearLayout>

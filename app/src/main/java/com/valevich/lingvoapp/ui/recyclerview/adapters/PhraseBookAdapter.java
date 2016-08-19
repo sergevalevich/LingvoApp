@@ -20,7 +20,7 @@ public class PhraseBookAdapter extends RecyclerViewAdapterBase<PhraseCategory, P
     Context mContext;
 
     public void initAdapter() {
-        mItems = new ArrayList<>(Arrays.asList(new PhraseCategory(),new PhraseCategory(),new PhraseCategory()));
+        mItems = PhraseCategory.getAll();
     }
 
     @Override

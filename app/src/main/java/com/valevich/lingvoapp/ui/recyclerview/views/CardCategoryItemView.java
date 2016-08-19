@@ -14,6 +14,9 @@ import com.valevich.lingvoapp.utils.ImageLoader;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
+import org.androidannotations.annotations.res.StringRes;
+
+import java.util.Locale;
 
 @EViewGroup(R.layout.grid_item_card)
 public class CardCategoryItemView extends FrameLayout implements ViewBinder<CardCategory> {
@@ -27,6 +30,12 @@ public class CardCategoryItemView extends FrameLayout implements ViewBinder<Card
     @ViewById(R.id.progress)
     ProgressBar mProgressBar;
 
+    @ViewById(R.id.progress_text)
+    TextView mProgressLabel;
+
+    @StringRes(R.string.percent)
+    String mPercentSign;
+
     @Bean
     ImageLoader mImageLoader;
 
@@ -36,8 +45,13 @@ public class CardCategoryItemView extends FrameLayout implements ViewBinder<Card
 
     @Override
     public void bindData(CardCategory item) {
-        mImageLoader.loadImageByUrl(item.getImageUrl(),mImageView);
+        mImageLoader.loadImageByResId(item.getImageResId(),mImageView);
         mCategoryNameLabel.setText(item.getName());
         mProgressBar.setProgress(item.getProgress());
+        mProgressLabel.setText(String.format(
+                Locale.getDefault(),
+                "%d%s",
+                item.getProgress(),
+                mPercentSign));
     }
 }

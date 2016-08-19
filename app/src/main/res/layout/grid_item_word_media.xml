@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             xmlns:tools="http://schemas.android.com/tools"
+             android:layout_width="@dimen/grid_item_card_size"
+             android:layout_height="@dimen/grid_item_card_size"
+             android:layout_gravity="center">
+
+    <ImageView
+        android:id="@+id/image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:adjustViewBounds="true"
+        tools:src="@drawable/shark"/>
+
+    <RelativeLayout
+        android:id="@+id/actions"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/grid_item_support_area_height"
+        android:layout_gravity="bottom"
+        android:background="@drawable/action_area">
+
+
+        <ImageView
+            android:id="@+id/star"
+            android:layout_width="@dimen/details_action_button_size"
+            android:layout_height="@dimen/details_action_button_size"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/action_details_side_margin"
+            android:layout_marginLeft="@dimen/action_details_side_margin"
+            android:layout_marginEnd="@dimen/action_details_side_margin"
+            android:layout_marginRight="@dimen/action_details_side_margin"
+            android:src = "@drawable/star_animals"/>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/star"
+            android:layout_toEndOf="@+id/star"
+            android:layout_toStartOf="@+id/sound"
+            android:layout_toLeftOf="@+id/sound"
+            android:layout_centerVertical="true"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/original"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/primary_textSize"
+                android:singleLine="true"
+                android:textColor="@color/colorTextLight"
+                tools:text = "АКУЛА"/>
+
+            <TextView
+                android:id="@+id/translate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/secondary_textSize"
+                android:singleLine="true"
+                android:textColor="@color/colorTextLight"
+                tools:text = "Shark"/>
+
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/sound"
+            android:layout_width="@dimen/details_action_button_size"
+            android:layout_height="@dimen/details_action_button_size"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:src = "@drawable/sound_animals"
+            android:layout_marginStart="@dimen/action_details_side_margin"
+            android:layout_marginLeft="@dimen/action_details_side_margin"
+            android:layout_marginEnd="@dimen/action_details_side_margin"
+            android:layout_marginRight="@dimen/action_details_side_margin"
+            android:layout_centerVertical="true"/>
+
+    </RelativeLayout>
+
+</FrameLayout>

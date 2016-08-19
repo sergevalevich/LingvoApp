@@ -7,44 +7,44 @@
         <item
             android:id="@+id/drawer_achievements"
             android:title="@string/nav_drawer_achievements"
-            android:icon="@mipmap/ic_launcher"
+            android:icon="@drawable/star_menu"
             android:checked="true">
         </item>
 
         <item
             android:id="@+id/drawer_cards"
             android:title="@string/nav_drawer_cards"
-            android:icon="@mipmap/ic_launcher">
+            android:icon="@drawable/cards_menu">
         </item>
 
         <item
             android:id="@+id/drawer_phrasebook"
             android:title="@string/nav_drawer_phrasebook"
-            android:icon="@mipmap/ic_launcher">
+            android:icon="@drawable/talk_menu">
         </item>
 
         <item
             android:id="@+id/drawer_dictionary"
             android:title="@string/nav_drawer_dictionary"
-            android:icon="@mipmap/ic_launcher">
+            android:icon="@drawable/book_menu">
         </item>
 
         <item
             android:id="@+id/drawer_trainings"
             android:title="@string/nav_drawer_trainings"
-            android:icon="@mipmap/ic_launcher">
+            android:icon="@drawable/trening_menu">
         </item>
 
         <item
             android:id="@+id/drawer_settings"
             android:title="@string/nav_drawer_settings"
-            android:icon="@mipmap/ic_launcher">
+            android:icon="@drawable/options_menu">
         </item>
 
         <item
             android:id="@+id/drawer_exit"
             android:title="@string/nav_drawer_exit"
-            android:icon="@mipmap/ic_launcher">
+            android:icon="@drawable/exit_menu">
         </item>
 
     </group>

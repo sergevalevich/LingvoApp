@@ -19,8 +19,8 @@
     <dimen name="action_area_vertical_padding">4dp</dimen>
     <dimen name="support_area_side_padding">12dp</dimen>
     <dimen name="progress_bar_corner_radius">5dp</dimen>
-    <dimen name="grid_item_size">148dp</dimen>
-    <dimen name="grid_spacing">8dp</dimen>
+    <dimen name="grid_item_min_width">148dp</dimen>
+    <dimen name="grid_spacing">4dp</dimen>
     <dimen name="support_area_bottom_padding">4dp</dimen>
     <dimen name="list_images_corner_radius">4dp</dimen>
     <dimen name="phrase_category_item_height">56dp</dimen>
@@ -34,10 +34,20 @@
     <dimen name="settings_arrow_size">24dp</dimen>
     <dimen name="play_button_size">24dp</dimen>
     <dimen name="side_bar_width">32dp</dimen>
-    <dimen name="grid_item_wide_width">148dp</dimen>
-    <dimen name="grid_item_wide_height">120dp</dimen>
     <dimen name="trainings_image_size">72dp</dimen>
     <dimen name="training_image_top_margin">2dp</dimen>
     <dimen name="setting_top_padding">64dp</dimen>
     <dimen name="profile_image_size">64dp</dimen>
+    <dimen name="progress_bottom_margin">4dp</dimen>
+    <dimen name="grid_item_card_size">156dp</dimen>
+    <dimen name="grid_spacing_wide">8dp</dimen>
+    <dimen name="action_details_side_margin">4dp</dimen>
+    <dimen name="details_action_button_size">20dp</dimen>
+    <dimen name="word_details_top_padding">16dp</dimen>
+    <dimen name="word_details_side_padding">16dp</dimen>
+    <dimen name="details_arrow_height">48dp</dimen>
+    <dimen name="word_details_action_button_size">36dp</dimen>
+    <dimen name="word_details_arrow_side_padding">16dp</dimen>
+    <dimen name="action_area_border_width">1dp</dimen>
+    <dimen name="word_details_bottom_margin">8dp</dimen>
 </resources>

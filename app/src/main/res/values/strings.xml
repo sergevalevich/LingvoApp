@@ -33,4 +33,5 @@
     <string name="stud_phrase_category">ПОВСЕДНЕВНЫЕ ФРАЗЫ</string>
     <string name="stub_dictionary_text">ability</string>
     <string name="search_hint">search</string>
+    <string name="percent">%</string>
 </resources>

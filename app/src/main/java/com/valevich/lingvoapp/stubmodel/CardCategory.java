@@ -1,5 +1,7 @@
 package com.valevich.lingvoapp.stubmodel;
 
+import com.valevich.lingvoapp.R;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -10,12 +12,12 @@ public class CardCategory {
 
     private String mName;
 
-    private String mImageUrl;
+    private int mImageResId;
 
-    public CardCategory(int progress, String name, String imageUrl) {
+    public CardCategory(int progress, String name, int imageResId) {
         mProgress = progress;
         mName = name;
-        mImageUrl = imageUrl;
+        mImageResId = imageResId;
     }
 
     public int getProgress() {
@@ -26,13 +28,17 @@ public class CardCategory {
         return mName;
     }
 
-    public String getImageUrl() {
-        return mImageUrl;
+    public int getImageResId() {
+        return mImageResId;
     }
 
-    public static List<CardCategory> getAll() {//// TODO: 17.08.2016 there will be db implementation
+    public static List<CardCategory> getAll() {
         return new ArrayList<>(Arrays.asList(
-                new CardCategory(20,"Животные",""),new CardCategory(30,"Страны",""),
-                new CardCategory(10,"Цветы",""),new CardCategory(80,"Цвета","")));
+                new CardCategory(0,"СТРАНЫ",R.drawable.city),
+                new CardCategory(0,"ЖИВОТНЫЕ",R.drawable.panda),
+                new CardCategory(0,"ЦВЕТЫ",R.drawable.flowers),
+                new CardCategory(0,"ЦВЕТА",R.drawable.colors),
+                new CardCategory(0,"ФРУКТЫ",R.drawable.fruits),
+                new CardCategory(0,"ОВОЩИ",R.drawable.vegetables)));
     }
 }
