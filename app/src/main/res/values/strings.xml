@@ -46,4 +46,5 @@
     <string name="password_confirm_failed_msg">Passwords mismatch</string>
     <string name="recover_dialog_message">Recovering</string>
     <string name="share_dialog_msg">share_with</string>
+    <string name="button_next">CONTINUE</string>
 </resources>
