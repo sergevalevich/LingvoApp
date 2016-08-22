@@ -51,7 +51,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/primary_textSize"
                 android:singleLine="true"
-                android:textColor="@color/colorTextLight"
+                android:textColor="@color/colorTextWhite"
                 tools:text = "АКУЛА"/>
 
             <TextView
@@ -60,7 +60,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/secondary_textSize"
                 android:singleLine="true"
-                android:textColor="@color/colorTextLight"
+                android:textColor="@color/colorTextWhite"
                 tools:text = "Shark"/>
 
         </LinearLayout>

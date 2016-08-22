@@ -1,36 +1,44 @@
-package com.valevich.lingvoapp.ui.fragments;
+package com.valevich.lingvoapp.ui.fragments.menusections;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.EditText;
 
 import com.valevich.lingvoapp.R;
-import com.valevich.lingvoapp.ui.recyclerview.adapters.WordMediaAdapter;
+import com.valevich.lingvoapp.ui.recyclerview.adapters.DictionaryAdapter;
 import com.valevich.lingvoapp.utils.ListItemDecoration;
+import com.viethoa.RecyclerViewFastScroller;
 
 import org.androidannotations.annotations.AfterViews;
+import org.androidannotations.annotations.Background;
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EFragment;
-import org.androidannotations.annotations.FragmentArg;
+import org.androidannotations.annotations.TextChange;
 import org.androidannotations.annotations.ViewById;
+import org.androidannotations.api.BackgroundExecutor;
 
-@EFragment(R.layout.fragment_word_media)
-public class WordMediaFragment extends Fragment {
+@EFragment(R.layout.fragment_dictionary)
+public class DictionaryFragment extends Fragment {
 
     private static final int WORDS_LOADER_ID = 0;
+    private static final String SEARCH_ID = "SEARCH_ID";
 
     @ViewById(R.id.words_list)
     RecyclerView mRecyclerView;
 
-    @Bean
-    WordMediaAdapter mAdapter;
+    @ViewById(R.id.fast_scroller)
+    RecyclerViewFastScroller mScroller;
 
-    @FragmentArg
-    String categoryName;
+    @ViewById(R.id.search_input)
+    EditText mSearchBar;
+
+    @Bean
+    DictionaryAdapter mDictionaryAdapter;
 
     @AfterViews
     void setUpViews() {
@@ -40,10 +48,22 @@ public class WordMediaFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        loadWords();
+        loadWords("");
     }
 
-    private void loadWords() {
+    @TextChange(R.id.search_input)
+    void setUpSearch(CharSequence charSequence) {
+        String filter = charSequence.toString();
+        BackgroundExecutor.cancelAll(SEARCH_ID, true);
+        queryWords(filter);
+    }
+
+    @Background(delay = 700, id = SEARCH_ID)
+    void queryWords(String filter) {
+        loadWords(filter);
+    }
+
+    private void loadWords(String filter) {
         getLoaderManager().restartLoader(WORDS_LOADER_ID,
                 null,
                 new LoaderManager.LoaderCallbacks() {
@@ -52,7 +72,7 @@ public class WordMediaFragment extends Fragment {
                         final AsyncTaskLoader loader = new AsyncTaskLoader(getActivity()) {
                             @Override
                             public Object loadInBackground() {
-                                mAdapter.init(categoryName);
+                                mDictionaryAdapter.init(filter);
                                 return null;
                             }
                         };
@@ -62,7 +82,9 @@ public class WordMediaFragment extends Fragment {
 
                     @Override
                     public void onLoadFinished(Loader loader, Object data) {
-                        mRecyclerView.setAdapter(mAdapter);
+                        mRecyclerView.setAdapter(mDictionaryAdapter);
+                        mScroller.setRecyclerView(mRecyclerView);
+                        mScroller.setUpAlphabet(mDictionaryAdapter.getAlphabetItems());
                     }
 
                     @Override
@@ -73,8 +95,9 @@ public class WordMediaFragment extends Fragment {
     }
 
     private void setUpRecyclerView() {
-        mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.grid_spacing_wide);
-        mRecyclerView.addItemDecoration(new ListItemDecoration(spacingInPixels));
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        mRecyclerView.addItemDecoration(new ListItemDecoration(getContext(),
+                LinearLayoutManager.VERTICAL));
     }
+
 }

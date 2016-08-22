@@ -1,4 +1,4 @@
-package com.valevich.lingvoapp.ui.fragments;
+package com.valevich.lingvoapp.ui.fragments.menusections;
 
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -32,7 +32,7 @@ public class CardCategoriesFragment extends Fragment {
         int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.grid_spacing_wide);
         mRecyclerView.addItemDecoration(new ListItemDecoration(spacingInPixels));
 
-        mCardCategoriesAdapter.initAdapter();
+        mCardCategoriesAdapter.init();
         mRecyclerView.setAdapter(mCardCategoriesAdapter);
     }
 

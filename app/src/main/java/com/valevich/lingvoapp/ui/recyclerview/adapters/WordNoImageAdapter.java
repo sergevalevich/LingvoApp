@@ -5,30 +5,31 @@ import android.view.ViewGroup;
 
 import com.valevich.lingvoapp.stubmodel.Word;
 import com.valevich.lingvoapp.ui.recyclerview.ViewWrapper;
-import com.valevich.lingvoapp.ui.recyclerview.views.WordMediaItemView;
 import com.valevich.lingvoapp.ui.recyclerview.views.WordMediaItemView_;
+import com.valevich.lingvoapp.ui.recyclerview.views.WordNoImageItemView;
+import com.valevich.lingvoapp.ui.recyclerview.views.WordNoImageItemView_;
 
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
 @EBean
-public class WordMediaAdapter extends RecyclerViewAdapterBase<Word,WordMediaItemView> {
+public class WordNoImageAdapter extends RecyclerViewAdapterBase<Word,WordNoImageItemView> {
 
     public void init(String categoryName) {
-        mItems = Word.getAllByCategory(categoryName);
+        Word.getAllByCategory(categoryName);
     }
 
     @RootContext
     Context mContext;
 
     @Override
-    protected WordMediaItemView onCreateItemView(ViewGroup parent, int viewType) {
-        return WordMediaItemView_.build(mContext);
+    protected WordNoImageItemView onCreateItemView(ViewGroup parent, int viewType) {
+        return WordNoImageItemView_.build(mContext);
     }
 
     @Override
-    public void onBindViewHolder(ViewWrapper<WordMediaItemView> holder, int position) {
-        WordMediaItemView itemView = holder.getView();
+    public void onBindViewHolder(ViewWrapper<WordNoImageItemView> holder, int position) {
+        WordNoImageItemView itemView = holder.getView();
         itemView.bindData(mItems.get(position));
     }
 }

@@ -18,7 +18,7 @@ public class CardCategoriesAdapter extends RecyclerViewAdapterBase<CardCategory,
     @RootContext
     Context mContext;
 
-    public void initAdapter() {
+    public void init() {
          mItems = CardCategory.getAll();
     }
 

@@ -16,12 +16,20 @@ public class Word implements Serializable {
 
     private String mImageUrl;
 
-    public Word() {}
+    private int mId;
+
+    public Word(String translation) {
+        mTranslation = translation;
+    }
 
     public Word(String original, boolean isFavorite, String imageUrl) {
         mOriginal = original;
         mIsFavorite = isFavorite;
         mImageUrl = imageUrl;
+    }
+
+    public static List<Word> getAll(String filter) {
+        return new ArrayList<>();
     }
 
     public String getOriginal() {
@@ -46,5 +54,13 @@ public class Word implements Serializable {
 
     public static List<Word> getAllByCategory(String categoryName) {
         return new ArrayList<>();
+    }
+
+    public static Word get(int wordId) {
+        return null;
+    }
+
+    public int getId() {
+        return mId;
     }
 }

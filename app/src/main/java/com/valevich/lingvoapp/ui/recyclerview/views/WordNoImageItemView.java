@@ -1,22 +1,21 @@
 package com.valevich.lingvoapp.ui.recyclerview.views;
 
 import android.content.Context;
-import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.valevich.lingvoapp.R;
 import com.valevich.lingvoapp.stubmodel.Word;
 import com.valevich.lingvoapp.ui.recyclerview.utils.ViewBinder;
-import com.valevich.lingvoapp.utils.ImageLoader;
+import com.valevich.lingvoapp.utils.WordShareActionProvider;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EViewGroup;
 import org.androidannotations.annotations.ViewById;
 
-@EViewGroup(R.layout.grid_item_word_media)
-public class WordMediaItemView extends FrameLayout implements ViewBinder<Word>{
+@EViewGroup(R.layout.word_no_image_list_item)
+public class WordNoImageItemView extends LinearLayout implements ViewBinder<Word> {
 
     @ViewById(R.id.star)
     ImageView mStar;
@@ -24,32 +23,28 @@ public class WordMediaItemView extends FrameLayout implements ViewBinder<Word>{
     @ViewById(R.id.sound)
     ImageView mPlayButton;
 
-    @ViewById(R.id.image)
-    ImageView mImageView;
+    @ViewById(R.id.share)
+    ImageView mShareButton;
 
     @ViewById(R.id.original)
     TextView mWordLabel;
 
-    @ViewById(R.id.translate)
+    @ViewById(R.id.translation)
     TextView mTranslatedWordLabel;
 
     @Bean
-    ImageLoader mImageLoader;
+    WordShareActionProvider mShareActionProvider;
 
-    public WordMediaItemView(Context context) {
+    public WordNoImageItemView(Context context) {
         super(context);
     }
 
     @Override
     public void bindData(Word item) {
-        bindImage(item.getImageUrl());
+        bindLabels(item);
         bindStar(item);
         bindPlayButton(item);
-        bindLabels(item);
-    }
-
-    private void bindImage(String imageUrl) {
-        mImageLoader.loadImageByUrl(imageUrl,mImageView);
+        bindShareAction(item);
     }
 
     private void bindLabels(Word item) {
@@ -62,12 +57,12 @@ public class WordMediaItemView extends FrameLayout implements ViewBinder<Word>{
         final boolean isFavorite = item.isFavorite();
 
         if(isFavorite) mStar.setImageResource(R.drawable.star_activ_animals);
-        else mStar.setImageResource(R.drawable.star_animals);
+        else mStar.setImageResource(R.drawable.star_animals_no_visibal_activ);
 
         mStar.setOnClickListener(view -> {
             if(isFavorite) {
                 item.setFavorite(false);
-                mStar.setImageResource(R.drawable.star_animals);
+                mStar.setImageResource(R.drawable.star_animals_no_visibal_activ);
             } else {
                 item.setFavorite(true);
                 mStar.setImageResource(R.drawable.star_activ_animals);
@@ -75,9 +70,14 @@ public class WordMediaItemView extends FrameLayout implements ViewBinder<Word>{
         });
     }
 
+    private void bindShareAction(Word item) {
+        mShareButton.setOnClickListener(view -> mShareActionProvider.share(item));
+    }
+
     private void bindPlayButton(Word item) {
         mPlayButton.setOnClickListener(view -> {
             // TODO: 19.08.2016 play sound
         });
     }
+
 }

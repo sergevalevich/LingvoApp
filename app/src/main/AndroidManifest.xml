@@ -27,7 +27,7 @@
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.valevich.moneytracker.ui.activities.LoginActivity"/>
+                android:value="com.valevich.lingvoapp.ui.activities.LoginActivity"/>
 
         </activity>
 
@@ -49,7 +49,19 @@
             <!-- Parent activity meta-data to support 4.0 and lower -->
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.valevich.moneytracker.ui.activities.LoginActivity"/>
+                android:value="com.valevich.lingvoapp.ui.activities.LoginActivity"/>
+
+        </activity>
+
+        <activity android:name=".ui.activities.DetailActivity_"
+                  android:theme="@style/AppTheme.NoActionBar"
+                  android:screenOrientation="portrait"
+                  android:parentActivityName=".ui.activities.MainActivity">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.valevich.lingvoapp.ui.activities.MainActivity"/>
 
         </activity>
 

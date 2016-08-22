@@ -17,7 +17,7 @@ public class TrainingsAdapter extends RecyclerViewAdapterBase<Training,CardTrain
     @RootContext
     Context mContext;
 
-    public void initAdapter() {
+    public void init() {
         mItems = Training.getAll();
     }
 

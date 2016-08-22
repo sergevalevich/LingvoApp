@@ -5,12 +5,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.valevich.lingvoapp.R;
-import com.valevich.lingvoapp.ui.recyclerview.adapters.WordMediaAdapter;
-import com.valevich.lingvoapp.utils.ListItemDecoration;
+import com.valevich.lingvoapp.ui.recyclerview.adapters.WordNoImageAdapter;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -18,19 +17,19 @@ import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.FragmentArg;
 import org.androidannotations.annotations.ViewById;
 
-@EFragment(R.layout.fragment_word_media)
-public class WordMediaFragment extends Fragment {
+@EFragment(R.layout.fragment_words_no_image)
+public class WordNoImageFragment extends Fragment {
 
     private static final int WORDS_LOADER_ID = 0;
 
     @ViewById(R.id.words_list)
     RecyclerView mRecyclerView;
 
-    @Bean
-    WordMediaAdapter mAdapter;
-
     @FragmentArg
     String categoryName;
+
+    @Bean
+    WordNoImageAdapter mAdapter;
 
     @AfterViews
     void setUpViews() {
@@ -41,6 +40,10 @@ public class WordMediaFragment extends Fragment {
     public void onResume() {
         super.onResume();
         loadWords();
+    }
+
+    private void setUpRecyclerView() {
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
     }
 
     private void loadWords() {
@@ -70,11 +73,5 @@ public class WordMediaFragment extends Fragment {
 
                     }
                 });
-    }
-
-    private void setUpRecyclerView() {
-        mRecyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.grid_spacing_wide);
-        mRecyclerView.addItemDecoration(new ListItemDecoration(spacingInPixels));
     }
 }

@@ -1,11 +1,11 @@
 package com.valevich.lingvoapp.ui.fragments;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.AsyncTaskLoader;
 import android.support.v4.content.Loader;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,11 +14,13 @@ import com.valevich.lingvoapp.stubmodel.Word;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
-import org.androidannotations.annotations.FragmentArg;
 import org.androidannotations.annotations.ViewById;
 
+
 @EFragment(R.layout.fragment_details)
-public class DetailsFragment extends Fragment {
+public class WordSlideFragment extends Fragment {
+
+    private static final String ARGUMENT_WORD = "WORD";
 
     private static final int WORD_LOADER_ID = 0;
 
@@ -49,13 +51,23 @@ public class DetailsFragment extends Fragment {
     @ViewById(R.id.share)
     ImageView mShareButton;
 
-    @FragmentArg
-    Word word;
+    private int mWordId;
 
-    @AfterViews
-    void setUpViews() {
-        setUpPlayButton();
-        setUpStarButton();
+    public WordSlideFragment() {}
+
+    public static WordSlideFragment newInstance(int wordId) {
+        WordSlideFragment pageFragment = new WordSlideFragment();
+        Bundle arguments = new Bundle();
+        arguments.putInt(ARGUMENT_WORD,wordId);
+        pageFragment.setArguments(arguments);
+        return pageFragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+        mWordId = getArguments().getInt(ARGUMENT_WORD);
     }
 
     @Override
@@ -67,14 +79,13 @@ public class DetailsFragment extends Fragment {
     private void loadWord() {
         getLoaderManager().restartLoader(WORD_LOADER_ID,
                 null,
-                new LoaderManager.LoaderCallbacks() {
+                new LoaderManager.LoaderCallbacks<Word>() {
                     @Override
-                    public Loader onCreateLoader(int id, Bundle args) {
-                        final AsyncTaskLoader loader = new AsyncTaskLoader(getActivity()) {
+                    public Loader<Word> onCreateLoader(int id, Bundle args) {
+                        final AsyncTaskLoader<Word> loader = new AsyncTaskLoader<Word>(getActivity()) {
                             @Override
-                            public Object loadInBackground() {
-                                //load word info
-                                return null;
+                            public Word loadInBackground() {
+                                return Word.get(mWordId);
                             }
                         };
                         loader.forceLoad();
@@ -82,46 +93,39 @@ public class DetailsFragment extends Fragment {
                     }
 
                     @Override
-                    public void onLoadFinished(Loader loader, Object data) {
-                        //fill views
+                    public void onLoadFinished(Loader<Word> loader, Word word) {
+                        setUpPlayButton(word);
+                        setUpStarButton(word);
                     }
 
                     @Override
-                    public void onLoaderReset(Loader loader) {
+                    public void onLoaderReset(Loader<Word> loader) {
 
                     }
                 });
     }
 
 
-    private void setUpStarButton() {
+    private void setUpStarButton(Word word) {
         final boolean isFavorite = word.isFavorite();
 
         if(isFavorite) mStar.setImageResource(R.drawable.star_activ_kitty);
         else mStar.setImageResource(R.drawable.star_kitty_);
 
-        mStar.setOnClickListener(new View.OnClickListener(){
-
-            @Override
-            public void onClick(View view) {
-                if(isFavorite) {
-                    word.setFavorite(false);
-                    mStar.setImageResource(R.drawable.star_kitty_);
-                } else {
-                    word.setFavorite(true);
-                    mStar.setImageResource(R.drawable.star_activ_kitty);
-                }
+        mStar.setOnClickListener(view -> {
+            if(isFavorite) {
+                word.setFavorite(false);
+                mStar.setImageResource(R.drawable.star_kitty_);
+            } else {
+                word.setFavorite(true);
+                mStar.setImageResource(R.drawable.star_activ_kitty);
             }
         });
     }
 
-    private void setUpPlayButton() {
-        mPlayButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //// TODO: 19.08.2016 play sound
-            }
+    private void setUpPlayButton(Word word) {
+        mPlayButton.setOnClickListener(view -> {
+            //// TODO: 19.08.2016 play sound
         });
     }
-
 }

@@ -1,4 +1,4 @@
-package com.valevich.lingvoapp.ui.fragments;
+package com.valevich.lingvoapp.ui.fragments.menusections;
 
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -28,7 +28,7 @@ public class PhraseBookFragment extends Fragment {
         mRecyclerView.addItemDecoration(new ListItemDecoration(getContext(),
                 LinearLayoutManager.VERTICAL ));
 
-        mPhraseBookAdapter.initAdapter();
+        mPhraseBookAdapter.init();
         mRecyclerView.setAdapter(mPhraseBookAdapter);
     }
 

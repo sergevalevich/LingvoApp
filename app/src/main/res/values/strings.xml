@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">LingvoApp</string>
+    <string name="app_name">Languageco</string>
     <string name="navigation_drawer_open" translatable="false">Open Navigation</string>
     <string name="navigation_drawer_close" translatable="false">Close Navigation</string>
     <string name="nav_drawer_achievements">Достижения</string>
@@ -11,7 +11,6 @@
     <string name="nav_drawer_exit">Выход</string>
     <string name="stub_username">Имя пользователя</string>
     <string name="stub_profileInfo">Информация о профиле</string>
-    <string name="app_title">LingvoApp</string>
     <string name="forgot_your_password">Forgot Your Password?</string>
     <string name="registration">Registration</string>
     <string name="login">Login</string>
@@ -32,6 +31,19 @@
     <string name="stub_phrase_category_examples">Приветствие, комплименты</string>
     <string name="stud_phrase_category">ПОВСЕДНЕВНЫЕ ФРАЗЫ</string>
     <string name="stub_dictionary_text">ability</string>
-    <string name="search_hint">search</string>
+    <string name="search_hint">Search</string>
     <string name="percent">%</string>
+    <string name="default_username">Сергей Валевич</string>
+    <string name="default_user_email">sergeyvalevich@gmail.com</string>
+    <string name="auth_dialog_content">Please wait</string>
+    <string name="auth_dialog_message">Authorization</string>
+    <string name="progress_dialog_tag">progress</string>
+    <string name="invalid_credentials_msg">Invalid credentials</string>
+    <string name="short_login_msg">Login must contain at least 3 symbols</string>
+    <string name="short_pass_msg">Password must contain at least 6 symbols</string>
+    <string name="invalid_email_msg">Invalid email</string>
+    <string name="empty_fields_msg">Please fill in all the required fields</string>
+    <string name="password_confirm_failed_msg">Passwords mismatch</string>
+    <string name="recover_dialog_message">Recovering</string>
+    <string name="share_dialog_msg">share_with</string>
 </resources>

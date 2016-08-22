@@ -9,14 +9,14 @@
               android:paddingStart="@dimen/word_details_side_padding"
               android:paddingTop="@dimen/word_details_top_padding">
 
-    <ImageView
-        android:id="@+id/image"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginBottom="@dimen/word_details_bottom_margin"
-        android:layout_weight="1"
-        android:scaleType="fitXY"
-        tools:src="@drawable/kitti"/>
+        <ImageView
+            android:id="@+id/image"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginBottom="@dimen/word_details_bottom_margin"
+            android:layout_weight="1"
+            android:scaleType="fitXY"
+            tools:src="@drawable/kitti"/>
 
     <LinearLayout
         android:id="@+id/frame"

@@ -12,20 +12,21 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.valevich.lingvoapp.R;
 import com.valevich.lingvoapp.eventbus.EventBus;
-import com.valevich.lingvoapp.ui.fragments.AchievementsFragment_;
-import com.valevich.lingvoapp.ui.fragments.CardCategoriesFragment_;
-import com.valevich.lingvoapp.ui.fragments.DictionaryFragment_;
-import com.valevich.lingvoapp.ui.fragments.PhraseBookFragment_;
 import com.valevich.lingvoapp.ui.fragments.ProfileDetailsFragment_;
-import com.valevich.lingvoapp.ui.fragments.SettingsFragment_;
-import com.valevich.lingvoapp.ui.fragments.TrainingsFragment_;
+import com.valevich.lingvoapp.ui.fragments.menusections.AchievementsFragment_;
+import com.valevich.lingvoapp.ui.fragments.menusections.CardCategoriesFragment_;
+import com.valevich.lingvoapp.ui.fragments.menusections.DictionaryFragment_;
+import com.valevich.lingvoapp.ui.fragments.menusections.PhraseBookFragment_;
+import com.valevich.lingvoapp.ui.fragments.menusections.SettingsFragment_;
+import com.valevich.lingvoapp.ui.fragments.menusections.TrainingsFragment_;
+import com.valevich.lingvoapp.utils.ImageLoader;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -71,6 +72,9 @@ public class MainActivity extends AppCompatActivity
 
     @Bean
     EventBus mEventBus;
+
+    @Bean
+    ImageLoader mImageLoader;
 
     private FragmentManager mFragmentManager;
 
@@ -129,39 +133,48 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void setupNavigationContent() {
-        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem item) {
-                if (mDrawerLayout != null) {
-                    mDrawerLayout.closeDrawer(GravityCompat.START);
-                }
-                int itemId = item.getItemId();
-                switch (itemId) {
-                    case R.id.drawer_achievements:
-                        replaceFragment(new AchievementsFragment_());
-                        break;
-                    case R.id.drawer_cards:
-                        replaceFragment(new CardCategoriesFragment_());
-                        break;
-                    case R.id.drawer_phrasebook:
-                        replaceFragment(new PhraseBookFragment_());
-                        break;
-                    case R.id.drawer_dictionary:
-                        replaceFragment(new DictionaryFragment_());
-                        break;
-                    case R.id.drawer_trainings:
-                        replaceFragment(new TrainingsFragment_());
-                        break;
-                    case R.id.drawer_settings:
-                        replaceFragment(new SettingsFragment_());
-                        break;
-                    case R.id.drawer_exit:
-                        navigateToLogIn();
-                        break;
-                }
-                return true;
+        mNavigationView.setNavigationItemSelectedListener(item -> {
+            if (mDrawerLayout != null) {
+                mDrawerLayout.closeDrawer(GravityCompat.START);
             }
+            int itemId = item.getItemId();
+            switch (itemId) {
+                case R.id.drawer_achievements:
+                    replaceFragment(new AchievementsFragment_());
+                    break;
+                case R.id.drawer_cards:
+                    replaceFragment(new CardCategoriesFragment_());
+                    break;
+                case R.id.drawer_phrasebook:
+                    replaceFragment(new PhraseBookFragment_());
+                    break;
+                case R.id.drawer_dictionary:
+                    replaceFragment(new DictionaryFragment_());
+                    break;
+                case R.id.drawer_trainings:
+                    replaceFragment(new TrainingsFragment_());
+                    break;
+                case R.id.drawer_settings:
+                    replaceFragment(new SettingsFragment_());
+                    break;
+                case R.id.drawer_exit:
+                    navigateToLogIn();
+                    break;
+            }
+            return true;
         });
+        mNavigationView.setItemIconTintList(null);
+
+        View headerView = mNavigationView.getHeaderView(0);
+        ImageView profileImage = (ImageView) headerView.findViewById(R.id.profile_image);
+        TextView nameField = (TextView) headerView.findViewById(R.id.name);
+        TextView emailField = (TextView) headerView.findViewById(R.id.email);
+
+        nameField.setText(R.string.default_username);
+        emailField.setText(R.string.default_user_email);
+        mImageLoader.loadImageByResId(R.drawable.man_main,profileImage);
+        // TODO: 21.08.2016 load user image
+
     }
 
     private void changeToolbarTitle(String backStackEntryName) {
@@ -224,14 +237,11 @@ public class MainActivity extends AppCompatActivity
     private void setUpProfileImage() {
         View header = mNavigationView.getHeaderView(0);
         ImageView profileImage = (ImageView) header.findViewById(R.id.profile_image);
-        profileImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mDrawerLayout != null) {
-                    mDrawerLayout.closeDrawer(GravityCompat.START);
-                }
-                replaceFragment(new ProfileDetailsFragment_());
+        profileImage.setOnClickListener(view -> {
+            if (mDrawerLayout != null) {
+                mDrawerLayout.closeDrawer(GravityCompat.START);
             }
+            replaceFragment(new ProfileDetailsFragment_());
         });
     }
 
@@ -263,7 +273,7 @@ public class MainActivity extends AppCompatActivity
         startActivity(intent);
     }
 
-    private void notifyUser(String message) {
+    private void notifyUserWithToast(String message) {
         Toast.makeText(this,
                 message,
                 Toast.LENGTH_SHORT).show();

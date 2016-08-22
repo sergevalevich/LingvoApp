@@ -1,86 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/fon_leves"
-                android:padding="@dimen/login_general_vertical_padding">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/fon_leves"
+              android:orientation="vertical"
+              android:id="@+id/root"
+              android:padding="@dimen/login_general_vertical_padding">
 
     <TextView
         android:id="@+id/title"
-        android:text="@string/app_title"
-        android:textSize="@dimen/primary_textSize_large"
-        android:textColor="@color/colorTextLight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"/>
+        android:gravity="center_horizontal"
+        android:text="@string/app_name"
+        android:textColor="@color/colorTextWhite"
+        android:textSize="@dimen/auth_title_size"
+        android:textStyle="bold"
+        android:layout_weight="0.5"/>
 
 
     <LinearLayout
-        android:id="@+id/input_area"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_below="@+id/title"
-        android:layout_marginTop="@dimen/login_input_area_top_margin">
+        android:layout_weight="1">
 
         <EditText
             android:id="@+id/login"
             android:layout_width="match_parent"
             android:layout_height="@dimen/field_height"
-            android:layout_marginBottom="@dimen/fields_vertical_margin"
             android:background="@drawable/bg_round"
-            android:paddingLeft="@dimen/hint_padding"
-            android:paddingStart="@dimen/hint_padding"
-            android:paddingRight="@dimen/hint_padding"
-            android:paddingEnd="@dimen/hint_padding"
-            android:inputType="text"
-            android:maxLength="10"
             android:hint="@string/login"
+            android:inputType="text"
+            android:maxLength="15"
+            android:paddingEnd="@dimen/hint_padding"
+            android:paddingLeft="@dimen/hint_padding"
+            android:paddingRight="@dimen/hint_padding"
+            android:paddingStart="@dimen/hint_padding"
+            android:layout_marginBottom="@dimen/fields_vertical_margin"
             android:singleLine="true"/>
 
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
             android:layout_height="@dimen/field_height"
-            android:layout_marginBottom="@dimen/fields_vertical_margin"
             android:background="@drawable/bg_round"
-            android:paddingLeft="@dimen/hint_padding"
-            android:paddingStart="@dimen/hint_padding"
-            android:paddingRight="@dimen/hint_padding"
-            android:paddingEnd="@dimen/hint_padding"
-            android:inputType="textPassword"
-            android:maxLength="10"
             android:hint="@string/password"
+            android:inputType="textPassword"
+            android:maxLength="15"
+            android:paddingEnd="@dimen/hint_padding"
+            android:paddingLeft="@dimen/hint_padding"
+            android:paddingRight="@dimen/hint_padding"
+            android:paddingStart="@dimen/hint_padding"
+            android:layout_marginBottom="@dimen/fields_vertical_margin"
             android:singleLine="true"/>
 
         <Button
             android:id="@+id/login_button"
             android:layout_width="match_parent"
             android:layout_height="@dimen/field_height"
-            android:background="@drawable/bg_round"
-            android:text="@string/log_in"/>
+            android:background="@color/button"
+            android:text="@string/log_in"
+            android:textColor="@color/colorTextWhite"/>
 
     </LinearLayout>
 
-
-    <TextView
-        android:id="@+id/forgot_pass"
-        android:text="@string/forgot_your_password"
-        android:textSize="@dimen/primary_textSize"
-        android:gravity="center"
+    <LinearLayout
+        android:layout_weight="0.01"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/register"
-        android:layout_marginBottom="@dimen/login_general_vertical_padding"/>
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/register"
-        android:text="@string/registration"
-        android:textSize="@dimen/primary_textSize"
-        android:layout_alignParentBottom="true"
-        android:gravity="center"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/forgot_pass"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/link"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/forgot_your_password"
+            android:textSize="@dimen/primary_textSize"
+            android:layout_marginBottom="@dimen/fields_vertical_margin"
+            android:padding="@dimen/link_padding"/>
 
-</RelativeLayout>
+        <TextView
+            android:id="@+id/register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/link"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/registration"
+            android:textSize="@dimen/primary_textSize"
+            android:padding="@dimen/link_padding"/>
+
+    </LinearLayout>
+
+</LinearLayout>

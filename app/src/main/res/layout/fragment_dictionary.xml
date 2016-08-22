@@ -4,13 +4,52 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/fon_leves1">
 
+    <FrameLayout
+        android:id="@+id/search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/search_bar_height"
+        android:background="@color/colorPrimary"
+        android:paddingStart="@dimen/search_bar_side_padding"
+        android:paddingEnd="@dimen/search_bar_side_padding">
+
+        <EditText
+            android:id="@+id/search_input"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/search_input_height"
+            android:hint="@string/search_hint"
+            android:textColorHint="@color/colorTextGray"
+            android:textColor="@color/colorTextGray"
+            android:background="@drawable/bg_round"
+            android:layout_gravity="center_vertical"
+            android:paddingStart="@dimen/search_input_side_padding"
+            android:paddingEnd="@dimen/search_input_side_padding"
+            android:inputType="text"/>
+
+        <ImageView
+            android:src = "@drawable/magnifier"
+            android:layout_width="@dimen/search_icon_size"
+            android:layout_height="@dimen/search_icon_size"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/search_icon_start_margin"
+            android:layout_marginStart="@dimen/search_icon_start_margin"/>
+
+    </FrameLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/words_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/search_bar">
 
     </android.support.v7.widget.RecyclerView>
+
+    <com.viethoa.RecyclerViewFastScroller
+        android:id="@+id/fast_scroller"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/search_bar"/>
 
 
 </RelativeLayout>
