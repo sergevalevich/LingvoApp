@@ -65,7 +65,7 @@ abstract class TrainingsBaseFragment extends Fragment {
         return words.remove(index);
     }
 
-    void setOptionClickListener(final int optionIndex, TextView optionLabel) {
+    void setOptionClickListener(final int optionIndex, View optionLabel) {
         optionLabel.setOnClickListener(view -> {
 
             //do not allow the user to answer once again

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/fon_leves1"
+              android:orientation="vertical"
+              android:paddingBottom="@dimen/trainings_main_padding"
+              android:paddingEnd="@dimen/trainings_main_padding"
+              android:paddingStart="@dimen/trainings_main_padding"
+              android:paddingTop="@dimen/trainings_main_padding">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_round"
+            android:gravity="center"
+            android:textColor="@color/colorTextGray"
+            android:textSize="@dimen/primary_textSize_large"
+            android:visibility="gone"
+            tools:text="АПЕЛЬСИН"/>
+
+        <ImageView
+            android:id="@+id/play_button"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@color/sound_training"/>
+
+        <ImageView
+            android:id="@+id/hint"
+            android:layout_width="@dimen/hint_size"
+            android:layout_height="@dimen/hint_size"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="@dimen/hint_side_margin"
+            android:layout_marginStart="@dimen/hint_side_margin"
+            android:src="@color/hint"/>
+
+    </FrameLayout>
+
+
+    <android.support.v7.widget.GridLayout
+        android:id="@+id/image_options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="4"
+        android:paddingTop="@dimen/training_grid_top_padding"
+        app:columnCount="2"
+        app:rowCount="2"
+        app:useDefaultMargins="true">
+
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1">
+
+            <ImageView
+                android:id="@+id/image_option_one"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                tools:src="@drawable/apple"/>
+
+            <ImageView
+                android:id="@+id/image_option_one_answer_notifier"
+                android:layout_width="@dimen/training_option_height"
+                android:layout_height="@dimen/training_option_height"
+                android:layout_gravity="bottom|start"
+                android:visibility="gone"
+                tools:src="@drawable/krestik"/>
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1">
+
+            <ImageView
+                android:id="@+id/image_option_two"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                tools:src="@drawable/lemon"/>
+
+            <ImageView
+                android:id="@+id/image_option_two_answer_notifier"
+                android:layout_width="@dimen/training_option_height"
+                android:layout_height="@dimen/training_option_height"
+                android:layout_gravity="bottom|start"
+                android:visibility="gone"
+                tools:src="@drawable/check"/>
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1">
+
+            <ImageView
+                android:id="@+id/image_option_three"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                tools:src="@drawable/arbuz"/>
+
+            <ImageView
+                android:id="@+id/image_option_three_answer_notifier"
+                android:layout_width="@dimen/training_option_height"
+                android:layout_height="@dimen/training_option_height"
+                android:layout_gravity="bottom|start"
+                android:visibility="gone"
+                tools:src="@drawable/check"/>
+
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_columnWeight="1"
+            app:layout_rowWeight="1">
+
+            <ImageView
+                android:id="@+id/image_option_four"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                tools:src="@drawable/apelsin"/>
+
+            <ImageView
+                android:id="@+id/image_option_four_answer_notifier"
+                android:layout_width="@dimen/training_option_height"
+                android:layout_height="@dimen/training_option_height"
+                android:layout_gravity="bottom|start"
+                android:visibility="gone"
+                tools:src="@drawable/check"/>
+
+        </FrameLayout>
+
+
+    </android.support.v7.widget.GridLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/button_next"
+            android:layout_width="@dimen/training_button_width"
+            android:layout_height="@dimen/training_button_height"
+            android:layout_gravity="center"
+            android:background="@color/button"
+            android:text="@string/button_next"
+            android:textColor="@color/colorTextWhite"
+            android:textSize="@dimen/primary_textSize"
+            android:visibility="invisible"/>
+
+    </FrameLayout>
+
+
+</LinearLayout>

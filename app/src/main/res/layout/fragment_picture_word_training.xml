@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@drawable/fon_leves1"
+              android:orientation="vertical"
+              android:paddingBottom="@dimen/trainings_main_padding"
+              android:paddingEnd="@dimen/trainings_main_padding"
+              android:paddingStart="@dimen/trainings_main_padding"
+              android:paddingTop="@dimen/trainings_main_padding">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_round"
+            android:gravity="center"
+            android:textColor="@color/colorTextGray"
+            android:textSize="@dimen/primary_textSize_large"
+            android:visibility="gone"
+            tools:text="АПЕЛЬСИН"/>
+
+        <ImageView
+            android:id="@+id/word_picture"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:src="@drawable/pear"/>
+
+        <ImageView
+            android:id="@+id/hint"
+            android:layout_width="@dimen/hint_size"
+            android:layout_height="@dimen/hint_size"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="@dimen/hint_side_margin"
+            android:layout_marginStart="@dimen/hint_side_margin"
+            android:src="@color/hint"/>
+
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:id="@+id/text_options"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="4"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/option_one"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/training_option_height"
+                android:layout_marginBottom="@dimen/fields_vertical_margin"
+                android:background="@drawable/bg_round"
+                android:gravity="center"
+                android:textColor="@color/colorTextGray"
+                android:textSize="@dimen/primary_textSize"
+                tools:text="Grapes"/>
+
+            <ImageView
+                android:id="@+id/option_one_answer_notifier"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/training_option_height"
+                android:paddingBottom="@dimen/word_translate_training_answer_icon_vertical_padding"
+                android:paddingEnd="@dimen/word_translate_training_answer_icon_side_padding"
+                android:paddingStart="@dimen/word_translate_training_answer_icon_side_padding"
+                android:paddingTop="@dimen/word_translate_training_answer_icon_vertical_padding"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                tools:src="@drawable/krestik"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/option_two"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/training_option_height"
+                android:layout_marginBottom="@dimen/fields_vertical_margin"
+                android:background="@drawable/bg_round"
+                android:gravity="center"
+                android:textColor="@color/colorTextGray"
+                android:textSize="@dimen/primary_textSize"
+                tools:text="Orange"/>
+
+            <ImageView
+                android:id="@+id/option_two_answer_notifier"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/training_option_height"
+                android:paddingBottom="@dimen/word_translate_training_answer_icon_vertical_padding"
+                android:paddingEnd="@dimen/word_translate_training_answer_icon_side_padding"
+                android:paddingStart="@dimen/word_translate_training_answer_icon_side_padding"
+                android:paddingTop="@dimen/word_translate_training_answer_icon_vertical_padding"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                tools:src="@drawable/krestik"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/option_three"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/training_option_height"
+                android:layout_marginBottom="@dimen/fields_vertical_margin"
+                android:background="@drawable/bg_round"
+                android:gravity="center"
+                android:textColor="@color/colorTextGray"
+                android:textSize="@dimen/primary_textSize"
+                tools:text="Grapefruit"/>
+
+            <ImageView
+                android:id="@+id/option_three_answer_notifier"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/training_option_height"
+                android:paddingBottom="@dimen/word_translate_training_answer_icon_vertical_padding"
+                android:paddingEnd="@dimen/word_translate_training_answer_icon_side_padding"
+                android:paddingStart="@dimen/word_translate_training_answer_icon_side_padding"
+                android:paddingTop="@dimen/word_translate_training_answer_icon_vertical_padding"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                tools:src="@drawable/krestik"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/option_four"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/training_option_height"
+                android:background="@drawable/bg_round"
+                android:gravity="center"
+                android:textColor="@color/colorTextGray"
+                android:textSize="@dimen/primary_textSize"
+                tools:text="Melon"/>
+
+            <ImageView
+                android:id="@+id/option_four_answer_notifier"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/training_option_height"
+                android:paddingBottom="@dimen/word_translate_training_answer_icon_vertical_padding"
+                android:paddingEnd="@dimen/word_translate_training_answer_icon_side_padding"
+                android:paddingStart="@dimen/word_translate_training_answer_icon_side_padding"
+                android:paddingTop="@dimen/word_translate_training_answer_icon_vertical_padding"
+                android:scaleType="centerCrop"
+                android:visibility="gone"
+                tools:src="@drawable/krestik"/>
+
+        </FrameLayout>
+
+    </LinearLayout>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <Button
+            android:id="@+id/button_next"
+            android:layout_width="@dimen/training_button_width"
+            android:layout_height="@dimen/training_button_height"
+            android:layout_gravity="center"
+            android:background="@color/button"
+            android:text="@string/button_next"
+            android:textColor="@color/colorTextWhite"
+            android:textSize="@dimen/primary_textSize"
+            android:visibility="invisible"/>
+
+    </FrameLayout>
+
+
+</LinearLayout>
