@@ -11,6 +11,8 @@ import com.valevich.lingvoapp.ui.recyclerview.views.CardTrainingItemView_;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
+import java.util.Arrays;
+
 @EBean
 public class TrainingsAdapter extends RecyclerViewAdapterBase<Training,CardTrainingItemView> {
 
@@ -18,7 +20,7 @@ public class TrainingsAdapter extends RecyclerViewAdapterBase<Training,CardTrain
     Context mContext;
 
     public void init() {
-        mItems = Training.getAll();
+        mItems = Arrays.asList(Training.values());
     }
 
     @Override

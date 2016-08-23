@@ -21,7 +21,7 @@ public class WordShareActionProvider {
     String mShareDialogMessage;
 
     public void share(Word word) {
-        Intent shareIntent = createShareIntent(word.getOriginal());
+        Intent shareIntent = createShareIntent(word.getNativeText());
         mContext.startActivity(Intent.createChooser(shareIntent,mShareDialogMessage));
     }
 

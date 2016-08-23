@@ -27,7 +27,7 @@ public class WordSlideFragment extends Fragment {
     @ViewById(R.id.image)
     ImageView mWordImage;
 
-    @ViewById(R.id.original)
+    @ViewById(R.id.nativeText)
     TextView mOriginalWordLabel;
 
     @ViewById(R.id.translate)

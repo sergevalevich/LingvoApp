@@ -63,12 +63,13 @@
     <dimen name="search_input_side_padding">36dp</dimen>
     <dimen name="search_icon_start_margin">4dp</dimen>
     <dimen name="trainings_main_padding">16dp</dimen>
-    <dimen name="training_word_translate_option_height">36dp</dimen>
+    <dimen name="training_option_height">36dp</dimen>
     <dimen name="training_button_width">148dp</dimen>
     <dimen name="training_button_height">30dp</dimen>
-    <dimen name="training_word_translate_bottom_padding">48dp</dimen>
+    <dimen name="training_bottom_padding">48dp</dimen>
     <dimen name="word_translate_training_answer_icon_side_padding">16dp</dimen>
     <dimen name="word_translate_training_answer_icon_vertical_padding">2dp</dimen>
     <dimen name="hint_side_margin">16dp</dimen>
     <dimen name="hint_size">36dp</dimen>
+    <dimen name="training_grid_top_padding">48dp</dimen>
 </resources>

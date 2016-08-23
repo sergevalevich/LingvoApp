@@ -1,7 +1,6 @@
 package com.valevich.lingvoapp.ui.recyclerview.views;
 
 import android.content.Context;
-import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -27,7 +26,7 @@ public class WordMediaItemView extends FrameLayout implements ViewBinder<Word>{
     @ViewById(R.id.image)
     ImageView mImageView;
 
-    @ViewById(R.id.original)
+    @ViewById(R.id.nativeText)
     TextView mWordLabel;
 
     @ViewById(R.id.translate)
@@ -53,7 +52,7 @@ public class WordMediaItemView extends FrameLayout implements ViewBinder<Word>{
     }
 
     private void bindLabels(Word item) {
-        mWordLabel.setText(item.getOriginal());
+        mWordLabel.setText(item.getNativeText());
         mTranslatedWordLabel.setText(item.getTranslation());
     }
 

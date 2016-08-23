@@ -1,14 +1,12 @@
 package com.valevich.lingvoapp.stubmodel;
 
-import android.os.Parcelable;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Word implements Serializable {
 
-    private String mOriginal;
+    private String mNativeText;
 
     private String mTranslation;
 
@@ -22,8 +20,8 @@ public class Word implements Serializable {
         mTranslation = translation;
     }
 
-    public Word(String original, boolean isFavorite, String imageUrl) {
-        mOriginal = original;
+    public Word(String nativeText, boolean isFavorite, String imageUrl) {
+        mNativeText = nativeText;
         mIsFavorite = isFavorite;
         mImageUrl = imageUrl;
     }
@@ -32,8 +30,8 @@ public class Word implements Serializable {
         return new ArrayList<>();
     }
 
-    public String getOriginal() {
-        return mOriginal;
+    public String getNativeText() {
+        return mNativeText;
     }
 
     public boolean isFavorite() {
@@ -62,5 +60,9 @@ public class Word implements Serializable {
 
     public int getId() {
         return mId;
+    }
+
+    public static List<Word> getBunch() {
+        return new ArrayList<>(4);
     }
 }

@@ -26,7 +26,7 @@ public class WordNoImageItemView extends LinearLayout implements ViewBinder<Word
     @ViewById(R.id.share)
     ImageView mShareButton;
 
-    @ViewById(R.id.original)
+    @ViewById(R.id.nativeText)
     TextView mWordLabel;
 
     @ViewById(R.id.translation)
@@ -48,7 +48,7 @@ public class WordNoImageItemView extends LinearLayout implements ViewBinder<Word
     }
 
     private void bindLabels(Word item) {
-        mWordLabel.setText(item.getOriginal());
+        mWordLabel.setText(item.getNativeText());
         mTranslatedWordLabel.setText(item.getTranslation());
     }
 
