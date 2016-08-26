@@ -18,9 +18,7 @@ import org.androidannotations.annotations.ViewsById;
 import java.util.List;
 
 @EFragment(R.layout.fragment_picture_word_training)
-public class PictureWordFragment extends TrainingsBaseFragment {
-    @ViewById(R.id.title)
-    TextView mTitle;
+public class PictureWordFragment extends OptionsBaseFragment {
 
     @ViewById(R.id.hint)
     ImageView mHintImage;
@@ -54,12 +52,12 @@ public class PictureWordFragment extends TrainingsBaseFragment {
     void bindData(List<Word> words) {
         setUpPicture(words.get(0));
         setUpHint();
-        setTitle(words.get(0), true);
         setOptions(words, true);
     }
 
     private void setUpPicture(Word correctWord) {
-        mImageLoader.loadImageByUrl(correctWord.getImageUrl(),mWordPicture);
+        //mImageLoader.loadImageByUrl(correctWord.getImageUrl(),mWordPicture);
+        mImageLoader.loadImageByResId(correctWord.getImageResId(),mWordPicture);
     }
 
     private void setUpHint() {
@@ -67,27 +65,15 @@ public class PictureWordFragment extends TrainingsBaseFragment {
     }
 
     private void toggleHint() {
-        if (mWordPicture.getVisibility() == View.VISIBLE) {
-            mWordPicture.setVisibility(View.GONE);
-            mTitle.setVisibility(View.VISIBLE);
-        } else {
-            mWordPicture.setVisibility(View.VISIBLE);
-            mTitle.setVisibility(View.GONE);
-        }
-    }
 
-    private void setTitle(Word correctAnswer, boolean areOptionsTranslated) {
-        mTitle.setText(areOptionsTranslated
-                ? correctAnswer.getNativeText()
-                : correctAnswer.getTranslation());
     }
 
     private void setOptions(List<Word> words, boolean isOptionTranslated) {
-
+        Word answer = words.get(0);
         for (int optionIndex = 0; optionIndex < OPTIONS_COUNT; optionIndex++) {
             TextView label = (TextView) mOptions.get(optionIndex);
             Word word = getRandomWord(words);
-            if (word.equals(words.get(0))) setCorrectAnswerIndex(optionIndex);
+            if (word.equals(answer)) setCorrectAnswerIndex(optionIndex);
 
             setOptionText(label, word, isOptionTranslated);
             setOptionClickListener(optionIndex, label);

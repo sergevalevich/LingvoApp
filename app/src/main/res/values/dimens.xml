@@ -72,4 +72,14 @@
     <dimen name="hint_side_margin">16dp</dimen>
     <dimen name="hint_size">36dp</dimen>
     <dimen name="training_grid_top_padding">48dp</dimen>
+    <dimen name="letter_label_size">28dp</dimen>
+    <dimen name="letter_button_size">42dp</dimen>
+    <dimen name="letter_label_side_margin">2dp</dimen>
+    <dimen name="letter_button_side_margin">4dp</dimen>
+    <dimen name="answer_state_notifier_size">36dp</dimen>
+    <dimen name="letter_button_textSize">32sp</dimen>
+    <dimen name="letter_button_rows_top_margin">8dp</dimen>
+    <dimen name="word_button_padding">4dp</dimen>
+    <dimen name="word_letter_padding">4dp</dimen>
+    <dimen name="picture_word_train_pic_size">148dp</dimen>
 </resources>

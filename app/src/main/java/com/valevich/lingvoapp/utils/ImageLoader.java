@@ -26,7 +26,6 @@ public class ImageLoader {
                 .load(imageUrl)
                 .thumbnail(0.1f)
                 .centerCrop()
-                .placeholder(R.drawable.shark)
                 .crossFade()
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .into(imageView);

@@ -41,14 +41,15 @@ public class WordMediaItemView extends FrameLayout implements ViewBinder<Word>{
 
     @Override
     public void bindData(Word item) {
-        bindImage(item.getImageUrl());
+        //bindImage(item.getImageUrl());
+        bindImage(item.getImageResId());
         bindStar(item);
         bindPlayButton(item);
         bindLabels(item);
     }
 
-    private void bindImage(String imageUrl) {
-        mImageLoader.loadImageByUrl(imageUrl,mImageView);
+    private void bindImage(int imageResId) {
+        mImageLoader.loadImageByResId(imageResId,mImageView);
     }
 
     private void bindLabels(Word item) {
@@ -58,13 +59,11 @@ public class WordMediaItemView extends FrameLayout implements ViewBinder<Word>{
 
     private void bindStar(final Word item) {
 
-        final boolean isFavorite = item.isFavorite();
-
-        if(isFavorite) mStar.setImageResource(R.drawable.star_activ_animals);
+        if(item.isFavorite()) mStar.setImageResource(R.drawable.star_activ_animals);
         else mStar.setImageResource(R.drawable.star_animals);
 
         mStar.setOnClickListener(view -> {
-            if(isFavorite) {
+            if(item.isFavorite()) {
                 item.setFavorite(false);
                 mStar.setImageResource(R.drawable.star_animals);
             } else {

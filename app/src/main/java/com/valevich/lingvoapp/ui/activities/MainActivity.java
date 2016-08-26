@@ -17,15 +17,31 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.otto.Subscribe;
 import com.valevich.lingvoapp.R;
 import com.valevich.lingvoapp.eventbus.EventBus;
+import com.valevich.lingvoapp.eventbus.events.TrainingSelectedEvent;
+import com.valevich.lingvoapp.eventbus.events.WordCategorySelectedEvent;
+import com.valevich.lingvoapp.eventbus.events.WordSelectedEvent;
+import com.valevich.lingvoapp.stubmodel.Training;
+import com.valevich.lingvoapp.ui.fragments.DetailsWrapper_;
 import com.valevich.lingvoapp.ui.fragments.ProfileDetailsFragment_;
+import com.valevich.lingvoapp.ui.fragments.WordMediaFragment_;
+import com.valevich.lingvoapp.ui.fragments.WordSlideFragment;
 import com.valevich.lingvoapp.ui.fragments.menusections.AchievementsFragment_;
 import com.valevich.lingvoapp.ui.fragments.menusections.CardCategoriesFragment_;
 import com.valevich.lingvoapp.ui.fragments.menusections.DictionaryFragment_;
 import com.valevich.lingvoapp.ui.fragments.menusections.PhraseBookFragment_;
 import com.valevich.lingvoapp.ui.fragments.menusections.SettingsFragment_;
 import com.valevich.lingvoapp.ui.fragments.menusections.TrainingsFragment_;
+import com.valevich.lingvoapp.ui.fragments.trainings.PhraseConstructionFragment_;
+import com.valevich.lingvoapp.ui.fragments.trainings.PictureWordFragment_;
+import com.valevich.lingvoapp.ui.fragments.trainings.SoundPictureFragment_;
+import com.valevich.lingvoapp.ui.fragments.trainings.SoundWordFragment_;
+import com.valevich.lingvoapp.ui.fragments.trainings.TranslateWordFragment;
+import com.valevich.lingvoapp.ui.fragments.trainings.TranslateWordFragment_;
+import com.valevich.lingvoapp.ui.fragments.trainings.WordPictureFragment_;
+import com.valevich.lingvoapp.ui.fragments.trainings.WordsConstructionFragment_;
 import com.valevich.lingvoapp.utils.ImageLoader;
 
 import org.androidannotations.annotations.AfterViews;
@@ -132,6 +148,51 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    @Subscribe
+    public void onWordCategorySelected(WordCategorySelectedEvent event) {
+        replaceFragment(WordMediaFragment_
+                .builder()
+                .categoryName(event.getCategoryName()).build());
+    }
+
+    @Subscribe
+    public void onWordSelected(WordSelectedEvent event) {
+        replaceFragment(DetailsWrapper_
+                .builder()
+                .wordNumber(event.getPosition()).categoryName(event.getCategoryName())
+                .build());
+    }
+
+    @Subscribe
+    public void onTrainingSelected(TrainingSelectedEvent event) {
+        switch (event.getTraining()) {
+            case TRANSLATION_WORD:
+                replaceFragment(TranslateWordFragment_.builder().areOptionsTranslated(true).build());
+                break;
+            case WORD_TRANSLATION:
+                replaceFragment(TranslateWordFragment_.builder().areOptionsTranslated(false).build());
+                break;
+            case WORD_PICTURE:
+                replaceFragment(new WordPictureFragment_());
+                break;
+            case PICTURE_WORD:
+                replaceFragment(new PictureWordFragment_());
+                break;
+            case SOUND_WORD:
+                replaceFragment(new SoundWordFragment_());
+                break;
+            case SOUND_PICTURE:
+                replaceFragment(new SoundPictureFragment_());
+                break;
+            case WORD_CONSTRUCTOR:
+                replaceFragment(new WordsConstructionFragment_());
+                break;
+            case PHRASE_CONSTRUCTOR:
+                replaceFragment(new PhraseConstructionFragment_());
+                break;
+        }
+    }
+
     private void setupNavigationContent() {
         mNavigationView.setNavigationItemSelectedListener(item -> {
             if (mDrawerLayout != null) {
@@ -172,7 +233,7 @@ public class MainActivity extends AppCompatActivity
 
         nameField.setText(R.string.default_username);
         emailField.setText(R.string.default_user_email);
-        mImageLoader.loadImageByResId(R.drawable.man_main,profileImage);
+        mImageLoader.loadImageByResId(R.drawable.man_main, profileImage);
         // TODO: 21.08.2016 load user image
 
     }
@@ -187,13 +248,13 @@ public class MainActivity extends AppCompatActivity
         } else if (backStackEntryName.equals(SettingsFragment_.class.getName())) {
             setTitle(mSettingsTitle);
             mNavigationView.setCheckedItem(R.id.drawer_settings);
-        } else if (backStackEntryName.equals(DictionaryFragment_.class.getName())){
+        } else if (backStackEntryName.equals(DictionaryFragment_.class.getName())) {
             setTitle(mDictionaryTitle);
             mNavigationView.setCheckedItem(R.id.drawer_dictionary);
-        } else if (backStackEntryName.equals(PhraseBookFragment_.class.getName())){
+        } else if (backStackEntryName.equals(PhraseBookFragment_.class.getName())) {
             setTitle(mPhraseBookTitle);
             mNavigationView.setCheckedItem(R.id.drawer_phrasebook);
-        } else if (backStackEntryName.equals(TrainingsFragment_.class.getName())){
+        } else if (backStackEntryName.equals(TrainingsFragment_.class.getName())) {
             setTitle(mTrainingsTitle);
             mNavigationView.setCheckedItem(R.id.drawer_trainings);
         } else {

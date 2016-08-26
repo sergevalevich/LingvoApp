@@ -19,12 +19,9 @@ import org.androidannotations.annotations.ViewsById;
 import java.util.List;
 
 @EFragment(R.layout.fragment_word_picture_training)
-public class WordPictureFragment extends TrainingsBaseFragment{
+public class WordPictureFragment extends OptionsBaseFragment {
     @ViewById(R.id.title)
     TextView mTitle;
-
-    @ViewById(R.id.hint)
-    ImageView mHintImage;
 
     @ViewById(R.id.button_next)
     Button mContinueButton;
@@ -50,13 +47,8 @@ public class WordPictureFragment extends TrainingsBaseFragment{
 
     @Override
     void bindData(List<Word> words) {
-        setUpHint();
         setTitle(words.get(0),true);
         setOptions(words);
-    }
-
-    private void setUpHint() {
-        // TODO: 23.08.2016 show hint
     }
 
     private void setTitle(Word correctAnswer, boolean areOptionsTranslated) {
@@ -66,11 +58,11 @@ public class WordPictureFragment extends TrainingsBaseFragment{
     }
 
     private void setOptions(List<Word> words) {
-
+        Word answer = words.get(0);
         for (int optionIndex = 0; optionIndex < OPTIONS_COUNT; optionIndex++) {
             ImageView optionImage = (ImageView) mOptions.get(optionIndex);
             Word word = getRandomWord(words);
-            if(word.equals(words.get(0))) setCorrectAnswerIndex(optionIndex);
+            if(word.equals(answer)) setCorrectAnswerIndex(optionIndex);
 
             setOptionImage(optionImage, word);
             setOptionClickListener(optionIndex, optionImage);
@@ -78,6 +70,7 @@ public class WordPictureFragment extends TrainingsBaseFragment{
     }
 
     private void setOptionImage(ImageView optionImage, Word word) {
-        mImageLoader.loadImageByUrl(word.getImageUrl(),optionImage);
+        //mImageLoader.loadImageByUrl(word.getImageUrl(),optionImage);
+        mImageLoader.loadImageByResId(word.getImageResId(),optionImage);
     }
 }

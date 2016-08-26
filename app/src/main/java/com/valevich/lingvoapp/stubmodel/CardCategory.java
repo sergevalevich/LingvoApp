@@ -41,4 +41,8 @@ public class CardCategory {
                 new CardCategory(0,"ФРУКТЫ",R.drawable.fruits),
                 new CardCategory(0,"ОВОЩИ",R.drawable.vegetables)));
     }
+
+    public void getWords() {
+
+    }
 }

@@ -1,6 +1,8 @@
 package com.valevich.lingvoapp.ui.recyclerview.views;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -26,16 +28,13 @@ public class CardTrainingItemView extends RelativeLayout implements ViewBinder<T
     @ViewById(R.id.title_part_two)
     TextView mTitlePartTwo;
 
-    @Bean
-    ImageLoader mImageLoader;
-
     public CardTrainingItemView(Context context) {
         super(context);
     }
 
     @Override
     public void bindData(Training item) {
-        mImageLoader.loadImageByResId(item.getImageResId(),mImageView);
+        mImageView.setImageResource(item.getImageResId());
         String[] parts = item.getTitle().split("\\s+");
         mTitlePartOne.setText(parts[0]);
 

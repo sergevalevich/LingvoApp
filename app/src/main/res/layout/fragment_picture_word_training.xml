@@ -10,26 +10,16 @@
               android:paddingStart="@dimen/trainings_main_padding"
               android:paddingTop="@dimen/trainings_main_padding">
 
-    <FrameLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
-        <TextView
-            android:id="@+id/title"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@drawable/bg_round"
-            android:gravity="center"
-            android:textColor="@color/colorTextGray"
-            android:textSize="@dimen/primary_textSize_large"
-            android:visibility="gone"
-            tools:text="АПЕЛЬСИН"/>
-
         <ImageView
             android:id="@+id/word_picture"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="@dimen/picture_word_train_pic_size"
+            android:layout_height="@dimen/picture_word_train_pic_size"
+            android:layout_centerInParent="true"
             tools:src="@drawable/pear"/>
 
         <ImageView
@@ -39,9 +29,12 @@
             android:layout_gravity="center_vertical|end"
             android:layout_marginEnd="@dimen/hint_side_margin"
             android:layout_marginStart="@dimen/hint_side_margin"
+            android:layout_toRightOf="@+id/word_picture"
+            android:layout_toEndOf="@+id/word_picture"
+            android:layout_centerVertical="true"
             android:src="@color/hint"/>
 
-    </FrameLayout>
+    </RelativeLayout>
 
 
     <LinearLayout

@@ -17,7 +17,7 @@ import org.androidannotations.annotations.ViewsById;
 import java.util.List;
 
 @EFragment(R.layout.fragment_translate_word_training)
-public class TranslateWordFragment extends TrainingsBaseFragment {
+public class TranslateWordFragment extends OptionsBaseFragment {
 
 
     @ViewById(R.id.title)
@@ -58,11 +58,11 @@ public class TranslateWordFragment extends TrainingsBaseFragment {
     }
 
     private void setOptions(List<Word> words, boolean isOptionTranslated) {
-
+        Word answer = words.get(0);
         for (int optionIndex = 0; optionIndex < OPTIONS_COUNT; optionIndex++) {
             TextView label = (TextView) mOptions.get(optionIndex);
             Word word = getRandomWord(words);
-            if(word.equals(words.get(0))) setCorrectAnswerIndex(optionIndex);
+            if(word.equals(answer)) setCorrectAnswerIndex(optionIndex);
 
             setOptionText(label, word, isOptionTranslated);
             setOptionClickListener(optionIndex, label);

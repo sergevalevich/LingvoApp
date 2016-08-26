@@ -26,15 +26,6 @@
             android:textSize="@dimen/primary_textSize_large"
             tools:text="АПЕЛЬСИН"/>
 
-        <ImageView
-            android:id="@+id/hint"
-            android:layout_width="@dimen/hint_size"
-            android:layout_height="@dimen/hint_size"
-            android:layout_gravity="center_vertical|end"
-            android:layout_marginEnd="@dimen/hint_side_margin"
-            android:layout_marginStart="@dimen/hint_side_margin"
-            android:src="@color/hint"/>
-
     </FrameLayout>
 
 

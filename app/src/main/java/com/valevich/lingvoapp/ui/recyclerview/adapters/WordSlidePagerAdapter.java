@@ -6,6 +6,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.valevich.lingvoapp.stubmodel.Word;
 import com.valevich.lingvoapp.ui.fragments.WordSlideFragment;
+import com.valevich.lingvoapp.ui.fragments.WordSlideFragment_;
 
 
 import java.util.List;
@@ -21,7 +22,7 @@ public class WordSlidePagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return WordSlideFragment.newInstance(mWords.get(position).getId());
+        return WordSlideFragment_.builder().wordId(mWords.get(position).getId()).build();
     }
 
     @Override

@@ -23,7 +23,6 @@
             android:gravity="center"
             android:textColor="@color/colorTextGray"
             android:textSize="@dimen/primary_textSize_large"
-            android:visibility="gone"
             tools:text="АПЕЛЬСИН"/>
 
         <ImageView

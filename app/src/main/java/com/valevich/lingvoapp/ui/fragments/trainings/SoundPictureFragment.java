@@ -18,7 +18,7 @@ import org.androidannotations.annotations.ViewsById;
 import java.util.List;
 
 @EFragment(R.layout.fragment_sound_picture_training)
-public class SoundPictureFragment extends TrainingsBaseFragment {
+public class SoundPictureFragment extends OptionsBaseFragment {
     @ViewById(R.id.title)
     TextView mTitle;
 
@@ -43,6 +43,8 @@ public class SoundPictureFragment extends TrainingsBaseFragment {
     @Bean
     ImageLoader mImageLoader;
 
+    private String mCorrectAnswer = "";
+
     @AfterViews
     void setUpViews() {
         collectOptions(mOptions);
@@ -54,7 +56,7 @@ public class SoundPictureFragment extends TrainingsBaseFragment {
     void bindData(List<Word> words) {
         setUpPlayButton(words.get(0));
         setUpHint();
-        setTitle(words.get(0),true);
+        setCorrectAnswer(words.get(0).getTranslation());
         setOptions(words);
     }
 
@@ -71,25 +73,23 @@ public class SoundPictureFragment extends TrainingsBaseFragment {
     private void toggleHint() {
         if(mPlayButton.getVisibility() == View.VISIBLE) {
             mPlayButton.setVisibility(View.GONE);
-            mTitle.setVisibility(View.VISIBLE);
+            mTitle.setText(mCorrectAnswer);
         } else {
             mPlayButton.setVisibility(View.VISIBLE);
-            mTitle.setVisibility(View.GONE);
+            mTitle.setText("");
         }
     }
 
-    private void setTitle(Word correctAnswer, boolean areOptionsTranslated) {
-        mTitle.setText(areOptionsTranslated
-                ? correctAnswer.getNativeText()
-                : correctAnswer.getTranslation());
+    private void setCorrectAnswer(String correctAnswer) {
+        mCorrectAnswer = correctAnswer;
     }
 
     private void setOptions(List<Word> words) {
-
+        Word answer = words.get(0);
         for (int optionIndex = 0; optionIndex < OPTIONS_COUNT; optionIndex++) {
             ImageView optionImage = (ImageView) mOptions.get(optionIndex);
             Word word = getRandomWord(words);
-            if(word.equals(words.get(0))) setCorrectAnswerIndex(optionIndex);
+            if(word.equals(answer)) setCorrectAnswerIndex(optionIndex);
 
             setOptionImage(optionImage, word);
             setOptionClickListener(optionIndex, optionImage);
@@ -97,6 +97,7 @@ public class SoundPictureFragment extends TrainingsBaseFragment {
     }
 
     private void setOptionImage(ImageView optionImage, Word word) {
-        mImageLoader.loadImageByUrl(word.getImageUrl(),optionImage);
+        //mImageLoader.loadImageByUrl(word.getImageUrl(),optionImage);
+        mImageLoader.loadImageByResId(word.getImageResId(),optionImage);
     }
 }

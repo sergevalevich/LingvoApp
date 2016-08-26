@@ -9,7 +9,6 @@ import android.support.v4.content.Loader;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.valevich.lingvoapp.R;
 import com.valevich.lingvoapp.stubmodel.Word;
@@ -21,7 +20,7 @@ import java.util.List;
 import java.util.Random;
 
 @EFragment
-abstract class TrainingsBaseFragment extends Fragment {
+abstract class OptionsBaseFragment extends Fragment {
     private static final int WORDS_LOADER_ID = 0;
     static final int OPTIONS_COUNT = 4;
 
@@ -71,20 +70,28 @@ abstract class TrainingsBaseFragment extends Fragment {
             //do not allow the user to answer once again
             blockOptions();
 
-            if(isAnswerCorrect(optionIndex)) {
-                mAnswerStateNotifiers.get(optionIndex).setImageResource(R.drawable.check);
-            } else {
-                mAnswerStateNotifiers.get(optionIndex).setImageResource(R.drawable.krestik);
-                mAnswerStateNotifiers.get(mCorrectAnswerIndex).setImageResource(R.drawable.check);
+            ImageView correctAnswerNotifier = mAnswerStateNotifiers.get(mCorrectAnswerIndex);
+
+            if(!isAnswerCorrect(optionIndex)) {
+                ImageView wrongAnswerNotifier =  mAnswerStateNotifiers.get(optionIndex);
+                showNotifier(wrongAnswerNotifier,R.drawable.krestik);
             }
 
-            //show button to load next word
-            mContinueButton.setVisibility(View.VISIBLE);
+            showNotifier(correctAnswerNotifier,R.drawable.check);
 
-            //reset correctIndex
-            mCorrectAnswerIndex = -1;
+            //show button to load next word
+            showContinueButton();
 
         });
+    }
+
+    private void showNotifier(ImageView notifier, int imageResId) {
+        notifier.setImageResource(imageResId);
+        notifier.setVisibility(View.VISIBLE);
+    }
+
+    private void hideNotifier(ImageView notifier) {
+        notifier.setVisibility(View.GONE);
     }
 
     private void loadWords() {
@@ -116,11 +123,30 @@ abstract class TrainingsBaseFragment extends Fragment {
                 });
     }
 
+    private void showContinueButton() {
+        mContinueButton.setVisibility(View.VISIBLE);
+    }
+
+    private void hideContinueButton() {
+        mContinueButton.setVisibility(View.INVISIBLE);
+    }
+
     private void setUpContinueButton() {
         mContinueButton.setOnClickListener(view -> {
-            mContinueButton.setVisibility(View.INVISIBLE);
+            hideContinueButton();
+            reset();
             loadWords();
         });
+    }
+
+    private void reset() {
+
+        mCorrectAnswerIndex = -1;
+
+        for(ImageView notifier: mAnswerStateNotifiers) {
+            hideNotifier(notifier);
+        }
+
     }
 
     private void blockOptions() {

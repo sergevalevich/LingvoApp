@@ -22,4 +22,44 @@
         <item name="android:textSize">@dimen/primary_textSize</item>
     </style>
 
+    <style name="LetterButtonStyle">
+        <item name="android:layout_width">@dimen/letter_button_size</item>
+        <item name="android:layout_height">@dimen/letter_button_size</item>
+        <item name="android:background">@drawable/bg_round</item>
+        <item name="android:textSize">@dimen/letter_button_textSize</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginLeft">@dimen/letter_button_side_margin</item>
+        <item name="android:layout_marginRight">@dimen/letter_button_side_margin</item>
+    </style>
+
+    <style name="LetterLabelStyle">
+        <item name="android:layout_width">@dimen/letter_label_size</item>
+        <item name="android:layout_height">@dimen/letter_label_size</item>
+        <item name="android:textSize">@dimen/primary_textSize_large</item>
+        <item name="android:textColor">@color/colorTextGray</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="WordButtonStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/bg_round</item>
+        <item name="android:textSize">@dimen/letter_button_textSize</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginLeft">@dimen/letter_button_side_margin</item>
+        <item name="android:layout_marginRight">@dimen/letter_button_side_margin</item>
+        <item name="android:padding">@dimen/word_button_padding</item>
+    </style>
+
+    <style name="WordLabelStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/primary_textSize_large</item>
+        <item name="android:textColor">@color/colorTextGray</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/word_letter_padding</item>
+    </style>
+
 </resources>
