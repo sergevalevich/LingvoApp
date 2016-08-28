@@ -52,8 +52,13 @@ public class SoundWordFragment extends OptionsBaseFragment {
     void bindData(List<Word> words) {
         setUpPlayButton(words.get(0));
         setUpHint();
-        setCorrectAnswer(words.get(0).getTranslation());
+        setCorrectAnswer(words.get(0).getNativeText());
         setOptions(words,true);
+    }
+
+    @Override
+    void hideHints() {
+        hideHint();
     }
 
     private void setUpPlayButton(Word correctAnswer) {
@@ -67,13 +72,18 @@ public class SoundWordFragment extends OptionsBaseFragment {
     }
 
     private void toggleHint() {
-        if(mPlayButton.getVisibility() == View.VISIBLE) {
-            mPlayButton.setVisibility(View.GONE);
-            mTitle.setText(mCorrectAnswer);
-        } else {
-            mPlayButton.setVisibility(View.VISIBLE);
-            mTitle.setText("");
-        }
+        if(mPlayButton.getVisibility() == View.VISIBLE) showHint();
+        else hideHint();
+    }
+
+    private void showHint() {
+        mPlayButton.setVisibility(View.GONE);
+        mTitle.setText(mCorrectAnswer);
+    }
+
+    private void hideHint() {
+        mPlayButton.setVisibility(View.VISIBLE);
+        mTitle.setText("");
     }
 
     private void setCorrectAnswer(String correctAnswer) {

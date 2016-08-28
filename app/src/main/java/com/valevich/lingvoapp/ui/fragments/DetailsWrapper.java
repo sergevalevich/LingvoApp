@@ -1,84 +1,46 @@
 package com.valevich.lingvoapp.ui.fragments;
 
-import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.AsyncTaskLoader;
-import android.support.v4.content.Loader;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import com.valevich.lingvoapp.R;
-import com.valevich.lingvoapp.stubmodel.Word;
-import com.valevich.lingvoapp.ui.recyclerview.adapters.WordSlidePagerAdapter;
+import com.valevich.lingvoapp.stubmodel.Starable;
+import com.valevich.lingvoapp.stubmodel.Translatable;
+import com.valevich.lingvoapp.stubmodel.Viewable;
+import com.valevich.lingvoapp.ui.recyclerview.adapters.SlidePagerAdapter;
 
+import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.FragmentArg;
 import org.androidannotations.annotations.ViewById;
 
-import java.util.List;
+import java.util.Arrays;
 
 
 @EFragment(R.layout.details_wrapper)
-public class DetailsWrapper extends Fragment {
-
-
-    private static final String KEY_CURRENT_PAGE = "PAGE";
-    private static final int WORDS_LOADER_ID = 0;
+public class DetailsWrapper<T extends Parcelable & Translatable & Viewable & Starable> extends Fragment {
 
     @ViewById(R.id.pager)
     ViewPager mPager;
 
     @FragmentArg
-    int wordNumber;
+    int position;
 
     @FragmentArg
-    String categoryName;
+    Parcelable[] items;
 
-    @Override
-    public void onResume() {
-        super.onResume();
-        loadWords();
+    @AfterViews
+    void setUpViews() {
+        if(items != null) setupViewPager();
     }
 
-    private void setupViewPager(List<Word> words) {
-        PagerAdapter pagerAdapter = new WordSlidePagerAdapter(getFragmentManager(), words);
+    private void setupViewPager() {
+        PagerAdapter pagerAdapter = new SlidePagerAdapter<>(getFragmentManager(),
+                Arrays.asList((T[]) items));//cast because if the AA bug
         mPager.setAdapter(pagerAdapter);
-        mPager.setCurrentItem(wordNumber);
+        mPager.setCurrentItem(position);
     }
 
-
-    private void loadWords() {
-        getLoaderManager().restartLoader(WORDS_LOADER_ID,
-                null,
-                new LoaderManager.LoaderCallbacks<List<Word>>() {
-                    @Override
-                    public Loader<List<Word>> onCreateLoader(int i, Bundle bundle) {
-                        final AsyncTaskLoader<List<Word>> loader = new AsyncTaskLoader<List<Word>>(getContext()) {
-                            @Override
-                            public List<Word> loadInBackground() {
-                                return Word.getAllByCategory(categoryName);
-                            }
-                        };
-                        loader.forceLoad();
-                        return loader;
-                    }
-
-                    @Override
-                    public void onLoadFinished(Loader<List<Word>> loader, List<Word> words) {
-                        setupViewPager(words);
-                    }
-
-                    @Override
-                    public void onLoaderReset(Loader<List<Word>> loader) {
-
-                    }
-                });
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putInt(KEY_CURRENT_PAGE, mPager.getCurrentItem());
-    }
 }

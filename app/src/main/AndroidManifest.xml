@@ -16,13 +16,6 @@
             android:name=".ui.activities.MainActivity_"
             android:theme="@style/AppTheme.NoActionBar"
             android:screenOrientation="portrait">
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-
         </activity>
 
         <activity android:name=".ui.activities.RegistrationActivity_"
@@ -40,6 +33,12 @@
         <activity android:name=".ui.activities.LoginActivity_"
                   android:theme="@style/AppTheme.NoActionBar"
                   android:screenOrientation="portrait">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
 
         </activity>
 

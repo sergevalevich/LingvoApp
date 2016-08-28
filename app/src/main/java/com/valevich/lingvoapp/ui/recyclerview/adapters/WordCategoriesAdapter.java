@@ -6,17 +6,17 @@ import android.view.ViewGroup;
 
 import com.valevich.lingvoapp.eventbus.EventBus;
 import com.valevich.lingvoapp.eventbus.events.WordCategorySelectedEvent;
-import com.valevich.lingvoapp.stubmodel.CardCategory;
+import com.valevich.lingvoapp.stubmodel.WordCategory;
 import com.valevich.lingvoapp.ui.recyclerview.ViewWrapper;
-import com.valevich.lingvoapp.ui.recyclerview.views.CardCategoryItemView;
-import com.valevich.lingvoapp.ui.recyclerview.views.CardCategoryItemView_;
+import com.valevich.lingvoapp.ui.recyclerview.views.WordCategoryItemView;
+import com.valevich.lingvoapp.ui.recyclerview.views.WordCategoryItemView_;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EBean;
 import org.androidannotations.annotations.RootContext;
 
 @EBean
-public class CardCategoriesAdapter extends RecyclerViewAdapterBase<CardCategory, CardCategoryItemView>{
+public class WordCategoriesAdapter extends RecyclerViewAdapterBase<WordCategory, WordCategoryItemView>{
 
     @RootContext
     Context mContext;
@@ -25,17 +25,17 @@ public class CardCategoriesAdapter extends RecyclerViewAdapterBase<CardCategory,
     EventBus mEventBus;
 
     public void init() {
-         mItems = CardCategory.getAll();
+         mItems = WordCategory.getAll();
     }
 
     @Override
-    protected CardCategoryItemView onCreateItemView(ViewGroup parent, int viewType) {
-        return CardCategoryItemView_.build(mContext);
+    protected WordCategoryItemView onCreateItemView(ViewGroup parent, int viewType) {
+        return WordCategoryItemView_.build(mContext);
     }
 
     @Override
-    public void onBindViewHolder(ViewWrapper<CardCategoryItemView> holder, int position) {
-        CardCategoryItemView itemView = holder.getView();
+    public void onBindViewHolder(ViewWrapper<WordCategoryItemView> holder, int position) {
+        WordCategoryItemView itemView = holder.getView();
         itemView.bindData(mItems.get(position));
 
         itemView.setOnClickListener(view -> notifyWordCategorySelected(mItems

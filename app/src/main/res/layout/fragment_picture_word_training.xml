@@ -8,18 +8,32 @@
               android:paddingBottom="@dimen/trainings_main_padding"
               android:paddingEnd="@dimen/trainings_main_padding"
               android:paddingStart="@dimen/trainings_main_padding"
+              android:paddingLeft="@dimen/trainings_main_padding"
+              android:paddingRight="@dimen/trainings_main_padding"
               android:paddingTop="@dimen/trainings_main_padding">
 
-    <RelativeLayout
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_round"
+            android:gravity="center"
+            android:textColor="@color/colorTextGray"
+            android:textSize="@dimen/primary_textSize_large"
+            android:visibility="gone"
+            tools:text="АПЕЛЬСИН"/>
 
         <ImageView
             android:id="@+id/word_picture"
             android:layout_width="@dimen/picture_word_train_pic_size"
             android:layout_height="@dimen/picture_word_train_pic_size"
-            android:layout_centerInParent="true"
+            android:layout_gravity="center_horizontal"
             tools:src="@drawable/pear"/>
 
         <ImageView
@@ -29,13 +43,11 @@
             android:layout_gravity="center_vertical|end"
             android:layout_marginEnd="@dimen/hint_side_margin"
             android:layout_marginStart="@dimen/hint_side_margin"
-            android:layout_toRightOf="@+id/word_picture"
-            android:layout_toEndOf="@+id/word_picture"
-            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/hint_side_margin"
+            android:layout_marginRight="@dimen/hint_side_margin"
             android:src="@color/hint"/>
 
-    </RelativeLayout>
-
+    </FrameLayout>
 
     <LinearLayout
         android:id="@+id/text_options"
@@ -68,6 +80,8 @@
                 android:paddingBottom="@dimen/word_translate_training_answer_icon_vertical_padding"
                 android:paddingEnd="@dimen/word_translate_training_answer_icon_side_padding"
                 android:paddingStart="@dimen/word_translate_training_answer_icon_side_padding"
+                android:paddingRight="@dimen/word_translate_training_answer_icon_side_padding"
+                android:paddingLeft="@dimen/word_translate_training_answer_icon_side_padding"
                 android:paddingTop="@dimen/word_translate_training_answer_icon_vertical_padding"
                 android:scaleType="centerCrop"
                 android:visibility="gone"
@@ -97,6 +111,8 @@
                 android:paddingBottom="@dimen/word_translate_training_answer_icon_vertical_padding"
                 android:paddingEnd="@dimen/word_translate_training_answer_icon_side_padding"
                 android:paddingStart="@dimen/word_translate_training_answer_icon_side_padding"
+                android:paddingRight="@dimen/word_translate_training_answer_icon_side_padding"
+                android:paddingLeft="@dimen/word_translate_training_answer_icon_side_padding"
                 android:paddingTop="@dimen/word_translate_training_answer_icon_vertical_padding"
                 android:scaleType="centerCrop"
                 android:visibility="gone"
@@ -125,6 +141,8 @@
                 android:layout_height="@dimen/training_option_height"
                 android:paddingBottom="@dimen/word_translate_training_answer_icon_vertical_padding"
                 android:paddingEnd="@dimen/word_translate_training_answer_icon_side_padding"
+                android:paddingRight="@dimen/word_translate_training_answer_icon_side_padding"
+                android:paddingLeft="@dimen/word_translate_training_answer_icon_side_padding"
                 android:paddingStart="@dimen/word_translate_training_answer_icon_side_padding"
                 android:paddingTop="@dimen/word_translate_training_answer_icon_vertical_padding"
                 android:scaleType="centerCrop"
@@ -154,6 +172,8 @@
                 android:paddingBottom="@dimen/word_translate_training_answer_icon_vertical_padding"
                 android:paddingEnd="@dimen/word_translate_training_answer_icon_side_padding"
                 android:paddingStart="@dimen/word_translate_training_answer_icon_side_padding"
+                android:paddingRight="@dimen/word_translate_training_answer_icon_side_padding"
+                android:paddingLeft="@dimen/word_translate_training_answer_icon_side_padding"
                 android:paddingTop="@dimen/word_translate_training_answer_icon_vertical_padding"
                 android:scaleType="centerCrop"
                 android:visibility="gone"

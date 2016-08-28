@@ -23,6 +23,9 @@ public class PictureWordFragment extends OptionsBaseFragment {
     @ViewById(R.id.hint)
     ImageView mHintImage;
 
+    @ViewById(R.id.title)
+    TextView mTitle;
+
     @ViewById(R.id.word_picture)
     ImageView mWordPicture;
 
@@ -50,14 +53,21 @@ public class PictureWordFragment extends OptionsBaseFragment {
 
     @Override
     void bindData(List<Word> words) {
-        setUpPicture(words.get(0));
+        Word answer = words.get(0);
+        setUpPicture(answer.getImageResId());
         setUpHint();
+        setUpTitle(answer.getNativeText());
         setOptions(words, true);
     }
 
-    private void setUpPicture(Word correctWord) {
+    @Override
+    void hideHints() {
+        hideHint();
+    }
+
+    private void setUpPicture(int imageResId) {
         //mImageLoader.loadImageByUrl(correctWord.getImageUrl(),mWordPicture);
-        mImageLoader.loadImageByResId(correctWord.getImageResId(),mWordPicture);
+        mImageLoader.loadImageByResId(imageResId, mWordPicture);
     }
 
     private void setUpHint() {
@@ -65,7 +75,22 @@ public class PictureWordFragment extends OptionsBaseFragment {
     }
 
     private void toggleHint() {
+        if (mWordPicture.getVisibility() == View.VISIBLE) showHint();
+        else hideHint();
+    }
 
+    private void showHint() {
+        mWordPicture.setVisibility(View.GONE);
+        mTitle.setVisibility(View.VISIBLE);
+    }
+
+    private void hideHint() {
+        mTitle.setVisibility(View.GONE);
+        mWordPicture.setVisibility(View.VISIBLE);
+    }
+
+    private void setUpTitle(String title) {
+        mTitle.setText(title);
     }
 
     private void setOptions(List<Word> words, boolean isOptionTranslated) {

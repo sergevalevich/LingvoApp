@@ -11,6 +11,7 @@ import com.valevich.lingvoapp.R;
 import com.valevich.lingvoapp.ui.fragments.dialogs.AuthProgressDialogFragment;
 import com.valevich.lingvoapp.ui.fragments.dialogs.AuthProgressDialogFragment_;
 import com.valevich.lingvoapp.utils.InputFieldValidator;
+import com.valevich.lingvoapp.utils.KeyBoardHelper;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Bean;
@@ -55,6 +56,9 @@ public class LoginActivity extends AppCompatActivity {
     @Bean
     InputFieldValidator mInputFieldValidator;
 
+    @Bean
+    KeyBoardHelper mKeyBoardHelper;
+
     private AuthProgressDialogFragment mProgressDialog;
 
     @AfterViews
@@ -65,6 +69,7 @@ public class LoginActivity extends AppCompatActivity {
     @Click(R.id.login_button)
     void onLoginClicked() {
         blockButtons();
+        hideKeyBoard();
 
         String login = mLoginField.getText().toString();
         String password = mPasswordField.getText().toString();
@@ -112,6 +117,10 @@ public class LoginActivity extends AppCompatActivity {
         mLoginButton.setClickable(true);
         mForgotPassButton.setClickable(true);
         mRegisterButton.setClickable(true);
+    }
+
+    private void hideKeyBoard() {
+        mKeyBoardHelper.hideKeyBoard();
     }
 
     private boolean isInputValid(String login, String password) {

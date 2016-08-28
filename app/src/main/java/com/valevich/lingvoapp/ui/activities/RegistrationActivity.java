@@ -12,6 +12,7 @@ import com.valevich.lingvoapp.R;
 import com.valevich.lingvoapp.ui.fragments.dialogs.AuthProgressDialogFragment;
 import com.valevich.lingvoapp.ui.fragments.dialogs.AuthProgressDialogFragment_;
 import com.valevich.lingvoapp.utils.InputFieldValidator;
+import com.valevich.lingvoapp.utils.KeyBoardHelper;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
@@ -73,11 +74,15 @@ public class RegistrationActivity extends AppCompatActivity {
     @Bean
     InputFieldValidator mInputFieldValidator;
 
+    @Bean
+    KeyBoardHelper mKeyBoardHelper;
+
     private AuthProgressDialogFragment mProgressDialog;
 
     @Click(R.id.register_button)
     void onRegisterClicked() {
         blockButtons();
+        hideKeyBoard();
 
         String login = mLoginField.getText().toString();
         String password = mPasswordField.getText().toString();
@@ -149,6 +154,10 @@ public class RegistrationActivity extends AppCompatActivity {
 
     private void unblockButtons() {
         mRegisterButton.setClickable(true);
+    }
+
+    private void hideKeyBoard() {
+        mKeyBoardHelper.hideKeyBoard();
     }
 
     private void notifyUserWithSnackBar(String message) {

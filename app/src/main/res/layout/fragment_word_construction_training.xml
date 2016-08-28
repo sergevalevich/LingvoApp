@@ -9,6 +9,8 @@
               android:paddingBottom="@dimen/trainings_main_padding"
               android:paddingEnd="@dimen/trainings_main_padding"
               android:paddingStart="@dimen/trainings_main_padding"
+              android:paddingLeft="@dimen/trainings_main_padding"
+              android:paddingRight="@dimen/trainings_main_padding"
               android:paddingTop="@dimen/trainings_main_padding">
 
 
@@ -34,6 +36,8 @@
             android:layout_gravity="center_vertical|end"
             android:layout_marginEnd="@dimen/hint_side_margin"
             android:layout_marginStart="@dimen/hint_side_margin"
+            android:layout_marginLeft="@dimen/hint_side_margin"
+            android:layout_marginRight="@dimen/hint_side_margin"
             android:src="@color/hint"/>
 
     </FrameLayout>

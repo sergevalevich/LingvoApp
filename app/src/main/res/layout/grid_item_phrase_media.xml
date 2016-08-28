@@ -25,45 +25,29 @@
             android:id="@+id/star"
             android:layout_width="@dimen/details_action_button_size"
             android:layout_height="@dimen/details_action_button_size"
-            android:layout_alignParentStart="true"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/action_details_side_margin"
             android:layout_marginEnd="@dimen/action_details_side_margin"
             android:layout_marginLeft="@dimen/action_details_side_margin"
             android:layout_marginRight="@dimen/action_details_side_margin"
-            android:src = "@drawable/star_animals"/>
+            android:layout_marginStart="@dimen/action_details_side_margin"
+            android:src="@drawable/star_animals"/>
 
-        <LinearLayout
-            android:orientation="vertical"
+        <TextView
+            android:id="@+id/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@+id/star"
-            android:layout_toEndOf="@+id/star"
-            android:layout_toStartOf="@+id/sound"
-            android:layout_toLeftOf="@+id/sound"
             android:layout_centerVertical="true"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/nativeText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/primary_textSize"
-                android:singleLine="true"
-                android:textColor="@color/colorTextWhite"
-                tools:text = "АКУЛА"/>
-
-            <TextView
-                android:id="@+id/translate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/secondary_textSize"
-                android:singleLine="true"
-                android:textColor="@color/colorTextWhite"
-                tools:text = "SHARK"/>
-
-        </LinearLayout>
+            android:layout_toEndOf="@+id/star"
+            android:layout_toLeftOf="@+id/sound"
+            android:layout_toRightOf="@+id/star"
+            android:layout_toStartOf="@+id/sound"
+            android:maxLines="2"
+            android:gravity="center"
+            android:textColor="@color/colorTextWhite"
+            android:textSize="@dimen/secondary_textSize"
+            tools:text="Shark"/>
 
 
         <ImageView
@@ -72,12 +56,12 @@
             android:layout_height="@dimen/details_action_button_size"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:src = "@drawable/sound_animals"
-            android:layout_marginStart="@dimen/action_details_side_margin"
+            android:layout_centerVertical="true"
             android:layout_marginEnd="@dimen/action_details_side_margin"
-            android:layout_marginRight="@dimen/action_details_side_margin"
             android:layout_marginLeft="@dimen/action_details_side_margin"
-            android:layout_centerVertical="true"/>
+            android:layout_marginRight="@dimen/action_details_side_margin"
+            android:layout_marginStart="@dimen/action_details_side_margin"
+            android:src="@drawable/sound_animals"/>
 
     </RelativeLayout>
 

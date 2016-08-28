@@ -10,7 +10,9 @@
         android:layout_height="@dimen/search_bar_height"
         android:background="@color/colorPrimary"
         android:paddingStart="@dimen/search_bar_side_padding"
-        android:paddingEnd="@dimen/search_bar_side_padding">
+        android:paddingEnd="@dimen/search_bar_side_padding"
+        android:paddingLeft="@dimen/search_bar_side_padding"
+        android:paddingRight="@dimen/search_bar_side_padding">
 
         <EditText
             android:id="@+id/search_input"
@@ -23,6 +25,8 @@
             android:layout_gravity="center_vertical"
             android:paddingStart="@dimen/search_input_side_padding"
             android:paddingEnd="@dimen/search_input_side_padding"
+            android:paddingLeft="@dimen/search_input_side_padding"
+            android:paddingRight="@dimen/search_input_side_padding"
             android:inputType="text"/>
 
         <ImageView

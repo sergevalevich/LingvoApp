@@ -7,7 +7,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.valevich.lingvoapp.R;
-import com.valevich.lingvoapp.stubmodel.CardCategory;
+import com.valevich.lingvoapp.stubmodel.WordCategory;
 import com.valevich.lingvoapp.ui.recyclerview.utils.ViewBinder;
 import com.valevich.lingvoapp.utils.ImageLoader;
 
@@ -18,8 +18,8 @@ import org.androidannotations.annotations.res.StringRes;
 
 import java.util.Locale;
 
-@EViewGroup(R.layout.grid_item_card)
-public class CardCategoryItemView extends FrameLayout implements ViewBinder<CardCategory> {
+@EViewGroup(R.layout.grid_item_word_category)
+public class WordCategoryItemView extends FrameLayout implements ViewBinder<WordCategory> {
 
     @ViewById(R.id.image)
     ImageView mImageView;
@@ -39,12 +39,12 @@ public class CardCategoryItemView extends FrameLayout implements ViewBinder<Card
     @Bean
     ImageLoader mImageLoader;
 
-    public CardCategoryItemView(Context context) {
+    public WordCategoryItemView(Context context) {
         super(context);
     }
 
     @Override
-    public void bindData(CardCategory item) {
+    public void bindData(WordCategory item) {
         mImageLoader.loadImageByResId(item.getImageResId(),mImageView);
         mCategoryNameLabel.setText(item.getName());
         mProgressBar.setProgress(item.getProgress());

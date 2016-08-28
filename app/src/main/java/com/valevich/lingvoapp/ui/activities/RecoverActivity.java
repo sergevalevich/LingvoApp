@@ -11,6 +11,7 @@ import com.valevich.lingvoapp.R;
 import com.valevich.lingvoapp.ui.fragments.dialogs.AuthProgressDialogFragment;
 import com.valevich.lingvoapp.ui.fragments.dialogs.AuthProgressDialogFragment_;
 import com.valevich.lingvoapp.utils.InputFieldValidator;
+import com.valevich.lingvoapp.utils.KeyBoardHelper;
 
 import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.Click;
@@ -45,11 +46,15 @@ public class RecoverActivity extends AppCompatActivity {
     @Bean
     InputFieldValidator mInputFieldValidator;
 
+    @Bean
+    KeyBoardHelper mKeyBoardHelper;
+
     private AuthProgressDialogFragment mProgressDialog;
 
     @Click(R.id.recover_button)
     void onRecoverClicked() {
         blockButtons();
+        hideKeyBoard();
 
         String login = mLoginField.getText().toString();
 
@@ -82,6 +87,10 @@ public class RecoverActivity extends AppCompatActivity {
 
     private void unblockButtons() {
         mRecoverButton.setClickable(true);
+    }
+
+    private void hideKeyBoard() {
+        mKeyBoardHelper.hideKeyBoard();
     }
 
     private boolean isInputValid(String login) {

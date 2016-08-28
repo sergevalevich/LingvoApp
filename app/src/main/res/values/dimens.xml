@@ -82,4 +82,6 @@
     <dimen name="word_button_padding">4dp</dimen>
     <dimen name="word_letter_padding">4dp</dimen>
     <dimen name="picture_word_train_pic_size">148dp</dimen>
+    <dimen name="training_grid_item_height">108dp</dimen>
+    <dimen name="training_grid_item_width">108dp</dimen>
 </resources>

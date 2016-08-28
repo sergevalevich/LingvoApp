@@ -5,7 +5,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.valevich.lingvoapp.R;
-import com.valevich.lingvoapp.ui.recyclerview.adapters.CardCategoriesAdapter;
+import com.valevich.lingvoapp.ui.recyclerview.adapters.WordCategoriesAdapter;
 import com.valevich.lingvoapp.utils.ListItemDecoration;
 
 import org.androidannotations.annotations.AfterViews;
@@ -13,14 +13,14 @@ import org.androidannotations.annotations.Bean;
 import org.androidannotations.annotations.EFragment;
 import org.androidannotations.annotations.ViewById;
 
-@EFragment(R.layout.fragment_card_categories)
-public class CardCategoriesFragment extends Fragment {
+@EFragment(R.layout.fragment_word_categories)
+public class WordCategoriesFragment extends Fragment {
 
     @ViewById(R.id.grid)
     RecyclerView mRecyclerView;
 
     @Bean
-    CardCategoriesAdapter mCardCategoriesAdapter;
+    WordCategoriesAdapter mWordCategoriesAdapter;
 
     @AfterViews
     void setUpViews() {
@@ -32,8 +32,8 @@ public class CardCategoriesFragment extends Fragment {
         int spacingInPixels = getResources().getDimensionPixelSize(R.dimen.grid_spacing_wide);
         mRecyclerView.addItemDecoration(new ListItemDecoration(spacingInPixels));
 
-        mCardCategoriesAdapter.init();
-        mRecyclerView.setAdapter(mCardCategoriesAdapter);
+        mWordCategoriesAdapter.init();
+        mRecyclerView.setAdapter(mWordCategoriesAdapter);
     }
 
 }

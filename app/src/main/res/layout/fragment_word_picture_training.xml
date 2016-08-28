@@ -9,6 +9,8 @@
               android:paddingBottom="@dimen/trainings_main_padding"
               android:paddingEnd="@dimen/trainings_main_padding"
               android:paddingStart="@dimen/trainings_main_padding"
+              android:paddingLeft="@dimen/trainings_main_padding"
+              android:paddingRight="@dimen/trainings_main_padding"
               android:paddingTop="@dimen/trainings_main_padding">
 
     <FrameLayout
@@ -41,8 +43,8 @@
 
 
         <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/training_grid_item_width"
+            android:layout_height="@dimen/training_grid_item_height"
             app:layout_columnWeight="1"
             app:layout_rowWeight="1">
 
@@ -65,8 +67,8 @@
 
 
         <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/training_grid_item_width"
+            android:layout_height="@dimen/training_grid_item_height"
             app:layout_columnWeight="1"
             app:layout_rowWeight="1">
 
@@ -89,8 +91,8 @@
 
 
         <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/training_grid_item_width"
+            android:layout_height="@dimen/training_grid_item_height"
             app:layout_columnWeight="1"
             app:layout_rowWeight="1">
 
@@ -113,8 +115,8 @@
 
 
         <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/training_grid_item_width"
+            android:layout_height="@dimen/training_grid_item_height"
             app:layout_columnWeight="1"
             app:layout_rowWeight="1">
 

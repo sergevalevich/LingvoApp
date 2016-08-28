@@ -147,6 +147,8 @@ abstract class OptionsBaseFragment extends Fragment {
             hideNotifier(notifier);
         }
 
+        hideHints();
+
     }
 
     private void blockOptions() {
@@ -162,4 +164,6 @@ abstract class OptionsBaseFragment extends Fragment {
     }
 
     abstract void bindData(List<Word> words);
+
+    abstract void hideHints();
 }

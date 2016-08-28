@@ -51,6 +51,11 @@ public class TranslateWordFragment extends OptionsBaseFragment {
         setOptions(words, areOptionsTranslated);
     }
 
+    @Override
+    void hideHints() {
+
+    }
+
     private void setTitle(Word correctAnswer, boolean areOptionsTranslated) {
         mTitle.setText(areOptionsTranslated
                 ? correctAnswer.getNativeText()
