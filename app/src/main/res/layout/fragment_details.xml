@@ -36,15 +36,15 @@
         <ImageView
             android:id="@+id/left_arrow"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/details_arrow_height"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/arrow_padding"
             android:layout_gravity="start|center_vertical"
-            android:layout_weight="1"
-            android:scaleType="fitStart"
+            android:background="@color/pressed"
             android:src="@drawable/arrow_right"/>
 
         <LinearLayout
             android:id="@+id/word_info"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="vertical">
@@ -56,8 +56,8 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:singleLine="true"
-                android:textSize="@dimen/primary_textSize_large"
-                tools:text="кот"/>
+                android:textSize="@dimen/primary_textSize"
+                tools:text="доброе утро"/>
 
 
             <TextView
@@ -66,18 +66,18 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:singleLine="true"
-                android:textSize="@dimen/primary_textSize_large"
-                tools:text="CAT"/>
+                android:textSize="@dimen/primary_textSize"
+                tools:text="Gooв morning"/>
 
         </LinearLayout>
 
         <ImageView
             android:id="@+id/right_arrow"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/details_arrow_height"
+            android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"
-            android:layout_weight="1"
-            android:scaleType="fitEnd"
+            android:padding="@dimen/arrow_padding"
+            android:background="@color/pressed"
             android:src="@drawable/arrow_left"/>
 
     </LinearLayout>

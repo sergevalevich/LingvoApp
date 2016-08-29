@@ -6,6 +6,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.valevich.lingvoapp.R;
+import com.valevich.lingvoapp.eventbus.EventBus;
+import com.valevich.lingvoapp.eventbus.events.ArrowClickedEvent;
 import com.valevich.lingvoapp.stubmodel.Starable;
 import com.valevich.lingvoapp.stubmodel.Translatable;
 import com.valevich.lingvoapp.stubmodel.Viewable;
@@ -51,6 +53,9 @@ public class SlideFragment<T extends Translatable & Viewable & Starable & Parcel
     @Bean
     ImageLoader mImageLoader;
 
+    @Bean
+    EventBus mEventBus;
+
     @FragmentArg
     T item;
 
@@ -64,6 +69,7 @@ public class SlideFragment<T extends Translatable & Viewable & Starable & Parcel
         setUpLabels();
         setUpPlayButton();
         setUpStarButton();
+        setUpArrows();
     }
 
     private void setUpImage() {
@@ -95,6 +101,15 @@ public class SlideFragment<T extends Translatable & Viewable & Starable & Parcel
         mPlayButton.setOnClickListener(view -> {
             //// TODO: 19.08.2016 play sound
         });
+    }
+
+    private void setUpArrows() {
+        mLeftArrow.setOnClickListener(view -> notifyArrowClicked(true));
+        mRightArrow.setOnClickListener(view -> notifyArrowClicked(false));
+    }
+
+    private void notifyArrowClicked(boolean isLeftArrow) {
+        mEventBus.post(new ArrowClickedEvent(isLeftArrow));
     }
 
 }

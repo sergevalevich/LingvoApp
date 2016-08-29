@@ -6,6 +6,7 @@
     <color name="colorTextDark">#000000</color>
     <color name="colorTextWhite">#ffffff</color>
     <color name="colorTextGray">#99000000</color>
+    <color name="colorHighLightGray">#1A000000</color>
     <color name="colorActionArea">#80000000</color>
     <color name="colorPlaceholder">#80000000</color>
     <color name="colorTransparent">#00000000</color>

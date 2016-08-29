@@ -61,19 +61,21 @@ public class ProfileDetailsFragment extends Fragment{
 
     @OptionsItem(R.id.action_edit)
     void onEditClicked() {
-        mProfileImageEdit.setVisibility(View.VISIBLE);
-        mSaveButton.setVisibility(View.VISIBLE);
-        mConfirmPasswordField.setVisibility(View.VISIBLE);
-        unBlockInput();
+        toggleMode();
     }
 
     @AfterViews
     void setUpViews() {
         blockInput();
-        loadProfilePicture();
+        setUpImage();
+        setUpSaveButton();
     }
 
-    private void loadProfilePicture() {
+    private void setUpSaveButton() {
+        mSaveButton.setOnClickListener(view -> getActivity().onBackPressed());
+    }
+
+    private void setUpImage() {
         mImageLoader.loadRoundedImageByResId(R.drawable.man,R.drawable.man,mProfileImage);
     }
 
@@ -104,6 +106,22 @@ public class ProfileDetailsFragment extends Fragment{
         mAgeField.setKeyListener((KeyListener) mAgeField.getTag());
         mPasswordField.setKeyListener((KeyListener) mPasswordField.getTag());
         mOldPasswordField.setKeyListener((KeyListener) mOldPasswordField.getTag());
+    }
+
+    private void toggleMode() {
+        if(mProfileImageEdit.getVisibility() == View.GONE) {
+            toggleViews(View.VISIBLE);
+            unBlockInput();
+        } else {
+            toggleViews(View.GONE);
+            blockInput();
+        }
+    }
+
+    private void toggleViews(int visibility) {
+        mProfileImageEdit.setVisibility(visibility);
+        mSaveButton.setVisibility(visibility);
+        mConfirmPasswordField.setVisibility(visibility);
     }
 
 }

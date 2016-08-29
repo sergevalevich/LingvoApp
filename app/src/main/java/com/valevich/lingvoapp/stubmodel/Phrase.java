@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Phrase implements Parcelable,Translatable,Viewable,Starable {
+public class Phrase implements Parcelable,Translatable,Viewable,Starable,Randomized {
 
     private String mNativeText;
 
@@ -18,6 +18,8 @@ public class Phrase implements Parcelable,Translatable,Viewable,Starable {
     private int mImageResId;
 
     private boolean mIsFavorite;
+
+    public Phrase() {}
 
     public Phrase(String nativeText, String translation, int imageResId) {
         mNativeText = nativeText;
@@ -57,7 +59,8 @@ public class Phrase implements Parcelable,Translatable,Viewable,Starable {
         mIsFavorite = favorite;
     }
 
-    public static Phrase getRandom() {
+    @Override
+    public Phrase getRandom() {
         return new Phrase("СКОЛЬКО ТЕБЕ ЛЕТ ?","HOW OLD ARE YOU ?",-1);
     }
 

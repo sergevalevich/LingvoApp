@@ -15,7 +15,7 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1">
+        android:layout_weight="0.2">
 
         <TextView
             android:id="@+id/title"
@@ -29,8 +29,9 @@
 
         <ImageView
             android:id="@+id/play_button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="@dimen/play_button_size"
+            android:layout_height="@dimen/play_button_size"
+            android:layout_gravity="center"
             android:src="@color/sound_training"/>
 
         <ImageView

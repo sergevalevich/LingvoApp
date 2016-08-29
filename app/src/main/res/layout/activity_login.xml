@@ -47,7 +47,7 @@
             android:background="@drawable/bg_round"
             android:hint="@string/password"
             android:inputType="textPassword"
-            android:maxLength="15"
+            android:maxLength="25"
             android:paddingEnd="@dimen/hint_padding"
             android:paddingLeft="@dimen/hint_padding"
             android:paddingRight="@dimen/hint_padding"

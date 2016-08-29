@@ -41,6 +41,16 @@
         <item name="android:gravity">center</item>
     </style>
 
+    <style name="LetterButtonNotifierStyle">
+        <item name="android:layout_width">@dimen/letter_button_size</item>
+        <item name="android:layout_height">@dimen/letter_button_size</item>
+        <item name="android:background">@drawable/bg_round</item>
+        <item name="android:layout_marginLeft">@dimen/letter_button_side_margin</item>
+        <item name="android:layout_marginRight">@dimen/letter_button_side_margin</item>
+        <item name="android:src">@drawable/krestik</item>
+        <item name="android:visibility">gone</item>
+    </style>
+
     <style name="WordButtonStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>

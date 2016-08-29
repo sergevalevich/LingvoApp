@@ -34,7 +34,7 @@ abstract class OptionsBaseFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        if(mCorrectAnswerIndex == -1)
+        if (mCorrectAnswerIndex == -1)
             loadWords();
     }
 
@@ -65,28 +65,22 @@ abstract class OptionsBaseFragment extends Fragment {
     }
 
     void setOptionClickListener(final int optionIndex, View optionLabel) {
-        optionLabel.setOnClickListener(view -> {
-
-            //do not allow the user to answer once again
-            blockOptions();
-
-            ImageView correctAnswerNotifier = mAnswerStateNotifiers.get(mCorrectAnswerIndex);
-
-            if(!isAnswerCorrect(optionIndex)) {
-                ImageView wrongAnswerNotifier =  mAnswerStateNotifiers.get(optionIndex);
-                showNotifier(wrongAnswerNotifier,R.drawable.krestik);
-            }
-
-            showNotifier(correctAnswerNotifier,R.drawable.check);
-
-            //show button to load next word
-            showContinueButton();
-
-        });
+        optionLabel.setOnClickListener(view -> showIfOptionCorrect(optionIndex));
     }
 
-    private void showNotifier(ImageView notifier, int imageResId) {
-        notifier.setImageResource(imageResId);
+    private void showIfOptionCorrect(int optionIndex) {
+
+        ImageView notifier = mAnswerStateNotifiers.get(optionIndex);
+
+        if(isAnswerCorrect(optionIndex)) {
+            blockAllOptions();
+            notifier.setImageResource(R.drawable.check);
+            showContinueButton();
+        } else {
+            notifier.setImageResource(R.drawable.krestik);
+            blockOption(mOptions.get(optionIndex));
+        }
+
         notifier.setVisibility(View.VISIBLE);
     }
 
@@ -143,7 +137,7 @@ abstract class OptionsBaseFragment extends Fragment {
 
         mCorrectAnswerIndex = -1;
 
-        for(ImageView notifier: mAnswerStateNotifiers) {
+        for (ImageView notifier : mAnswerStateNotifiers) {
             hideNotifier(notifier);
         }
 
@@ -151,15 +145,23 @@ abstract class OptionsBaseFragment extends Fragment {
 
     }
 
-    private void blockOptions() {
-        for(View option:mOptions) {
-            option.setClickable(false);
+    private void blockOption(View option) {
+        if(option.isClickable()) option.setClickable(false);
+    }
+
+    private void unBlockOption(View option) {
+        if(!option.isClickable()) option.setClickable(true);
+    }
+
+    private void blockAllOptions() {
+        for (View option : mOptions) {
+            blockOption(option);
         }
     }
 
     private void unblockOptions() {
-        for(View option:mOptions) {
-            option.setClickable(true);
+        for (View option : mOptions) {
+            unBlockOption(option);
         }
     }
 

@@ -10,7 +10,10 @@ import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,9 +27,7 @@ import org.androidannotations.annotations.ViewById;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Random;
 
 @EFragment(R.layout.fragment_word_construction_training)
@@ -40,8 +41,11 @@ public class WordsConstructionFragment extends Fragment {
     @ViewById(R.id.hint)
     ImageView mHintImage;
 
-    @ViewById(R.id.answer_state_notifier)
-    ImageView mAnswerStateNotifier;
+    @ViewById(R.id.hint_label)
+    TextView mHintLabel;
+
+    @ViewById(R.id.right_answer_notifier)
+    ImageView mRightAnswerNotifier;
 
     @ViewById(R.id.button_next)
     Button mContinueButton;
@@ -55,16 +59,19 @@ public class WordsConstructionFragment extends Fragment {
     @ViewById(R.id.letters_answer_space)
     LinearLayout mLettersAnswerSpace;
 
+    private LayoutInflater mLayoutInflater;
+
     private List<TextView> mAnswerLabels = new ArrayList<>();
 
-    private List<TextView> mLetterButtons = new ArrayList<>();
-
-    private Map<TextView, TextView> mButtonLabelToggle = new HashMap<>();
+    private List<FrameLayout> mLetterButtons = new ArrayList<>();
 
     private String mAnswer;
 
+    private int mNextEmptyPosition;
+
     @AfterViews
     void setUpViews() {
+        setInflater();
         setUpContinueButton();
     }
 
@@ -73,6 +80,10 @@ public class WordsConstructionFragment extends Fragment {
         super.onResume();
         if (mAnswer == null)
             loadWord();
+    }
+
+    private void setInflater() {
+        mLayoutInflater = LayoutInflater.from(getContext());
     }
 
     private void setUpContinueButton() {
@@ -84,11 +95,12 @@ public class WordsConstructionFragment extends Fragment {
 
     private void reset() {
         mAnswer = null;
+        mNextEmptyPosition = 0;
         mTitle.setText("");
-        mAnswerStateNotifier.setVisibility(View.GONE);
+        mRightAnswerNotifier.setVisibility(View.GONE);
+        mContinueButton.setVisibility(View.INVISIBLE);
         mAnswerLabels.clear();
         mLetterButtons.clear();
-        mButtonLabelToggle.clear();
         mLetterButtonSpaceRowOne.removeAllViews();
         mLetterButtonSpaceRowTwo.removeAllViews();
         mLettersAnswerSpace.removeAllViews();
@@ -103,7 +115,7 @@ public class WordsConstructionFragment extends Fragment {
                         final AsyncTaskLoader<Word> loader = new AsyncTaskLoader<Word>(getActivity()) {
                             @Override
                             public Word loadInBackground() {
-                                return Word.getRandom();
+                                return new Word().getRandom();
                             }
                         };
                         loader.forceLoad();
@@ -142,176 +154,163 @@ public class WordsConstructionFragment extends Fragment {
     }
 
     private void showHint() {
-        for (int j = 0; j < mAnswerLabels.size(); j++) {
-            TextView label = mAnswerLabels.get(j);
-            if (label.getText().toString().equals(" ")) {
-
-                if (mAnswer != null) {//user clicked on hint
-                    String letter = mAnswer.substring(j, j + 1);
-                    for (TextView letterButton : mLetterButtons) {
-                        if (letterButton.getText().equals(letter)) {
-                            highLightUsedLetter(letterButton); //<-----
-                            SpannableString content = new SpannableString(letter);
-                            content.setSpan(new UnderlineSpan(), 0, 1, 0);
-
-                            label.setText(content);
-                            mButtonLabelToggle.put(letterButton, label);
-                            break;
-                        }
-                    }
-                }
-
-                if (!lastLetter(j)) {
-                    showAnswer();
-                }
-                break;
-            }
-        }
-    }
-
-    private void toggleLetter(TextView letterButton) {
-
         if (!hasUserAnswered()) {
-
-            if (wasLetterSelected(letterButton)) {
-
-                hideLetter(letterButton);
-
-                highlightButton(letterButton, R.drawable.bg_round, R.color.colorTextGray);
-
-            } else {
-
-                showLetter(letterButton);
-
-                highlightButton(letterButton, R.drawable.bg_letter_selected, R.color.colorTextWhite);
-            }
-
+            mHintLabel.setText(mAnswer.substring(mNextEmptyPosition, mNextEmptyPosition + 1));
+            fadeViewInOut(mHintLabel);
         }
     }
 
-    private void hideLetter(TextView letterButton) {
-        TextView label = mButtonLabelToggle.remove(letterButton);
+    private void checkLetter(FrameLayout letterButton) {
+        if (!hasUserAnswered()) {
+            TextView letterButtonLabel = getLetterButtonLabel(letterButton);
+            if (isLetterCorrect(letterButtonLabel.getText().toString())) {
+                highlightButton(letterButton);
+                showLetter(letterButtonLabel);
+            } else {
+                showNotifier(getLetterButtonNotifier(letterButton));
+            }
+        }
+    }
 
-        SpannableString content = new SpannableString(" ");
-        content.setSpan(new UnderlineSpan(), 0, 1, 0);
-        label.setText(content);
+    private boolean hasUserAnswered() {
+        return mNextEmptyPosition >= mAnswer.length();
+    }
+
+    private boolean isLetterCorrect(String letter) {
+        return letter.equals(mAnswer.substring(mNextEmptyPosition, mNextEmptyPosition + 1));
+    }
+
+    private void showNotifier(ImageView notifier) {
+        fadeViewInOut(notifier);
+    }
+
+    private void fadeViewInOut(View view) {
+        view.setVisibility(View.VISIBLE);
+
+        Animation bummerIn = AnimationUtils.loadAnimation(getContext(), R.anim.bummer_in);
+        Animation bummerOut = AnimationUtils.loadAnimation(getContext(), R.anim.bummer_out);
+        bummerIn.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                view.startAnimation(bummerOut);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+        bummerOut.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                view.setVisibility(View.INVISIBLE);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {
+
+            }
+        });
+
+
+        view.startAnimation(bummerIn);
     }
 
     private void showLetter(TextView letterButton) {
-        for (int j = 0; j < mAnswerLabels.size(); j++) {
-            TextView label = mAnswerLabels.get(j);
-            if (label.getText().toString().equals(" ")) {
-
-                SpannableString content = new SpannableString(letterButton.getText().toString());
-                content.setSpan(new UnderlineSpan(), 0, 1, 0);
-
-                label.setText(content);
-                mButtonLabelToggle.put(letterButton, label);
-
-                if (!lastLetter(j)) {
-                    showAnswer();
-                }
-                break;
-            }
-        }
+        TextView answerLabel = mAnswerLabels.get(mNextEmptyPosition);
+        SpannableString content = new SpannableString(letterButton.getText().toString());
+        content.setSpan(new UnderlineSpan(), 0, 1, 0);
+        answerLabel.setText(content);
+        if (lastLetter(mNextEmptyPosition++)) finishRound();
     }
 
-    private boolean wasLetterSelected(TextView letterButton) {
-        return mButtonLabelToggle.containsKey(letterButton);
-    }
-
-    private void highlightButton(TextView letterButton, int background, int textColor) {
-        letterButton.setBackgroundResource(background);
-        letterButton.setTextColor(ContextCompat.getColor(getContext(), textColor));
-    }
-
-    // TODO: 26.08.2016 deprecated
-    private void highLightUsedLetter(TextView letterButton) {
-        if (letterButton.getCurrentTextColor() == ContextCompat
-                .getColor(getContext(), R.color.colorTextWhite)) {
-
-            letterButton.setBackgroundResource(R.drawable.bg_round);
-            letterButton.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTextGray));
-
-        } else {
-            letterButton.setBackgroundResource(R.drawable.bg_letter_selected);
-            letterButton.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTextWhite));
-        }
+    private void highlightButton(FrameLayout letterButton) {
+        TextView letterButtonLabel = getLetterButtonLabel(letterButton);
+        letterButtonLabel.setBackgroundResource(R.drawable.bg_letter_selected);
+        letterButtonLabel.setTextColor(ContextCompat.getColor(getContext(), R.color.colorTextWhite));
+        letterButton.setClickable(false);
     }
 
     private void setUpLettersAndSpaces() {
-        LayoutInflater inflater = LayoutInflater.from(getContext());
+
         String empty = " ";
         SpannableString content = new SpannableString(empty);
         content.setSpan(new UnderlineSpan(), 0, empty.length(), 0);
 
         if (mAnswer != null) {
             for (int i = 0; i < mAnswer.length(); i++) {
-                View labelRoot = inflater.inflate(R.layout.letter_answer, mLettersAnswerSpace, false);
-                TextView letterLabel = (TextView) labelRoot.findViewById(R.id.letter_space);
 
-                View buttonRoot = inflater.inflate(R.layout.letter_button, mLetterButtonSpaceRowOne, false);
-                TextView letterButton = (TextView) buttonRoot.findViewById(R.id.letter_button);
+                createLetterLabel(content);
+                createLetterButton(mAnswer.substring(i, i + 1));
 
-                letterLabel.setText(content);
-                letterButton.setText(mAnswer.substring(i, i + 1));
-
-                letterButton.setOnClickListener(view -> toggleLetter(letterButton));
-
-
-                mLettersAnswerSpace.addView(letterLabel);
-                mAnswerLabels.add(letterLabel);
-                mLetterButtons.add(letterButton);
             }
-            addOddLetter(inflater);
+            createLetterButton(getRandomLetter());
             shuffleOptions();
         }
     }
 
-    private void addOddLetter(LayoutInflater inflater) {
-        View buttonRoot = inflater.inflate(R.layout.letter_button, mLetterButtonSpaceRowOne, false);
-        TextView oddLetterButton = (TextView) buttonRoot.findViewById(R.id.letter_button);
-        oddLetterButton.setText(getRandomLetter());
-        oddLetterButton.setOnClickListener(view -> toggleLetter(oddLetterButton));
-        mLetterButtons.add(oddLetterButton);
+    private void createLetterLabel(SpannableString text) {
+        View labelRoot = mLayoutInflater.inflate(R.layout.letter_answer, mLettersAnswerSpace, false);
+        TextView letterLabel = (TextView) labelRoot.findViewById(R.id.letter_space);
+        letterLabel.setText(text);
+        mAnswerLabels.add(letterLabel);
+        mLettersAnswerSpace.addView(letterLabel);
+    }
+
+    private void createLetterButton(String text) {
+        View buttonRoot = mLayoutInflater.inflate(R.layout.letter_button, mLetterButtonSpaceRowOne, false);
+        FrameLayout letterButton = (FrameLayout) buttonRoot.findViewById(R.id.root);
+        letterButton.setOnClickListener(view -> checkLetter(letterButton));
+        TextView letterButtonLabel = getLetterButtonLabel(letterButton);
+        letterButtonLabel.setText(text);
+        mLetterButtons.add(letterButton);
+    }
+
+    private TextView getLetterButtonLabel(FrameLayout letterButton) {
+        return (TextView) letterButton.findViewById(R.id.letter_button);
+    }
+
+    private ImageView getLetterButtonNotifier(FrameLayout letterButton) {
+        return (ImageView) letterButton.findViewById(R.id.wrong_answer_notifier);
     }
 
     private String getRandomLetter() {
-        return Character.toString((char)(new Random().nextInt(26) + 'A'));
+        return Character.toString((char) (new Random().nextInt(26) + 'A'));
     }
 
     private void shuffleOptions() {
         Collections.shuffle(mLetterButtons);
-        for (TextView letterButton : mLetterButtons) {
-            if(mLetterButtonSpaceRowOne.getChildCount() < 5)
-                mLetterButtonSpaceRowOne.addView(letterButton);
-            else mLetterButtonSpaceRowTwo.addView(letterButton);
+        for (FrameLayout option : mLetterButtons) {
+            if (mLetterButtonSpaceRowOne.getChildCount() < 5)
+                mLetterButtonSpaceRowOne.addView(option);
+            else mLetterButtonSpaceRowTwo.addView(option);
         }
     }
 
     private boolean lastLetter(int emptySpaceIndex) {
-        return !(emptySpaceIndex == mAnswerLabels.size() - 1);
+        return emptySpaceIndex == mAnswer.length() - 1;
     }
 
-    private boolean hasUserAnswered() {
-        return mButtonLabelToggle.size() == mAnswer.length();
+    private void finishRound() {
+        showAnswer();
+        showContinueButton();
     }
 
     private void showAnswer() {
-        mAnswerStateNotifier.setVisibility(View.VISIBLE);
-        if (isAnswerCorrect()) {
-            mAnswerStateNotifier.setImageResource(R.drawable.check);
-        } else {
-            mAnswerStateNotifier.setImageResource(R.drawable.krestik);
-        }
-        mContinueButton.setVisibility(View.VISIBLE);
+        mRightAnswerNotifier.setVisibility(View.VISIBLE);
     }
 
-    private boolean isAnswerCorrect() {
-        String userAnswer = "";
-        for (TextView label : mAnswerLabels) {
-            userAnswer += label.getText().toString();
-        }
-        return userAnswer.equals(mAnswer);
+    private void showContinueButton() {
+        mContinueButton.setVisibility(View.VISIBLE);
     }
 }

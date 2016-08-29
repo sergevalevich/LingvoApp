@@ -1,149 +1,164 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical"
-              android:paddingEnd="@dimen/login_general_vertical_padding"
-              android:paddingLeft="@dimen/login_general_vertical_padding"
-              android:paddingRight="@dimen/login_general_vertical_padding"
-              android:paddingStart="@dimen/login_general_vertical_padding"
-              android:background="@drawable/fon_leves1">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:background="@drawable/fon_leves1">
 
-    <FrameLayout
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginBottom="@dimen/fields_vertical_margin"
-        android:layout_marginTop="@dimen/fields_vertical_margin">
+        android:orientation="vertical"
+        android:paddingEnd="@dimen/login_general_vertical_padding"
+        android:paddingLeft="@dimen/login_general_vertical_padding"
+        android:paddingRight="@dimen/login_general_vertical_padding"
+        android:paddingStart="@dimen/login_general_vertical_padding"
+        android:paddingBottom="@dimen/profile_details_bottom_padding">
 
-        <ImageView
-            android:id="@+id/profile_image"
-            android:layout_width="@dimen/profile_image_size"
-            android:layout_height="@dimen/profile_image_size"
-            android:layout_gravity="center"/>
 
-        <ImageView
-            android:id="@+id/plus"
+        <FrameLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end|bottom"
-            android:src="@drawable/plus"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/fields_vertical_margin"
+            android:layout_marginTop="@dimen/fields_vertical_margin">
+
+            <ImageView
+                android:id="@+id/profile_image"
+                android:layout_width="@dimen/profile_image_size_details"
+                android:layout_height="@dimen/profile_image_size_details"
+                android:layout_gravity="center"
+                tools:src = "@drawable/man"/>
+
+            <ImageView
+                android:id="@+id/plus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end|bottom"
+                android:src="@drawable/plus"
+                android:layout_marginBottom="@dimen/edit_profile_plus_bottom_margin"
+                android:layout_marginRight="@dimen/edit_profile_plus_side_margin"
+                android:layout_marginEnd="@dimen/edit_profile_plus_side_margin"
+                android:visibility="gone"/>
+
+        </FrameLayout>
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/field_height"
+            android:layout_marginBottom="@dimen/fields_vertical_margin"
+            android:background="@drawable/bg_round"
+            android:hint="@string/name"
+            android:inputType="text"
+            android:maxLength="20"
+            android:paddingEnd="@dimen/hint_padding"
+            android:paddingLeft="@dimen/hint_padding"
+            android:paddingRight="@dimen/hint_padding"
+            android:paddingStart="@dimen/hint_padding"
+            android:singleLine="true"/>
+
+        <EditText
+            android:id="@+id/surname"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/field_height"
+            android:layout_marginBottom="@dimen/fields_vertical_margin"
+            android:background="@drawable/bg_round"
+            android:hint="@string/surname"
+            android:inputType="text"
+            android:maxLength="20"
+            android:paddingEnd="@dimen/hint_padding"
+            android:paddingLeft="@dimen/hint_padding"
+            android:paddingRight="@dimen/hint_padding"
+            android:paddingStart="@dimen/hint_padding"
+            android:singleLine="true"/>
+
+        <EditText
+            android:id="@+id/age"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/field_height"
+            android:layout_marginBottom="@dimen/fields_vertical_margin"
+            android:background="@drawable/bg_round"
+            android:hint="@string/age"
+            android:inputType="text"
+            android:maxLength="20"
+            android:paddingEnd="@dimen/hint_padding"
+            android:paddingLeft="@dimen/hint_padding"
+            android:paddingRight="@dimen/hint_padding"
+            android:paddingStart="@dimen/hint_padding"
+            android:singleLine="true"/>
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/field_height"
+            android:layout_marginBottom="@dimen/fields_vertical_margin"
+            android:background="@drawable/bg_round"
+            android:hint="@string/email"
+            android:inputType="textEmailAddress"
+            android:maxLength="254"
+            android:paddingEnd="@dimen/hint_padding"
+            android:paddingLeft="@dimen/hint_padding"
+            android:paddingRight="@dimen/hint_padding"
+            android:paddingStart="@dimen/hint_padding"
+            android:singleLine="true"/>
+
+        <EditText
+            android:id="@+id/password_old"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/field_height"
+            android:layout_marginBottom="@dimen/fields_vertical_margin"
+            android:background="@drawable/bg_round"
+            android:hint="@string/password_old"
+            android:inputType="textPassword"
+            android:maxLength="25"
+            android:paddingEnd="@dimen/hint_padding"
+            android:paddingLeft="@dimen/hint_padding"
+            android:paddingRight="@dimen/hint_padding"
+            android:paddingStart="@dimen/hint_padding"
+            android:singleLine="true"/>
+
+        <EditText
+            android:id="@+id/password"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/field_height"
+            android:layout_marginBottom="@dimen/fields_vertical_margin"
+            android:background="@drawable/bg_round"
+            android:hint="@string/password"
+            android:inputType="textPassword"
+            android:maxLength="25"
+            android:paddingEnd="@dimen/hint_padding"
+            android:paddingLeft="@dimen/hint_padding"
+            android:paddingRight="@dimen/hint_padding"
+            android:paddingStart="@dimen/hint_padding"
+            android:singleLine="true"/>
+
+        <EditText
+            android:id="@+id/password_confirm"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/field_height"
+            android:layout_marginBottom="@dimen/fields_vertical_margin"
+            android:background="@drawable/bg_round"
+            android:hint="@string/password_confirm"
+            android:inputType="textPassword"
+            android:maxLength="25"
+            android:paddingEnd="@dimen/hint_padding"
+            android:paddingLeft="@dimen/hint_padding"
+            android:paddingRight="@dimen/hint_padding"
+            android:paddingStart="@dimen/hint_padding"
+            android:singleLine="true"
             android:visibility="gone"/>
 
-    </FrameLayout>
+        <Button
+            android:id="@+id/save"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/field_height"
+            android:background="@color/button"
+            android:text="@string/save_button_title"
+            android:textColor="@color/colorTextWhite"
+            android:visibility="gone"/>
 
-    <EditText
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/field_height"
-        android:layout_marginBottom="@dimen/fields_vertical_margin"
-        android:background="@drawable/bg_round"
-        android:hint="@string/name"
-        android:inputType="text"
-        android:maxLength="10"
-        android:paddingEnd="@dimen/hint_padding"
-        android:paddingLeft="@dimen/hint_padding"
-        android:paddingRight="@dimen/hint_padding"
-        android:paddingStart="@dimen/hint_padding"
-        android:singleLine="true"/>
 
-    <EditText
-        android:id="@+id/surname"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/field_height"
-        android:layout_marginBottom="@dimen/fields_vertical_margin"
-        android:background="@drawable/bg_round"
-        android:hint="@string/surname"
-        android:inputType="text"
-        android:maxLength="10"
-        android:paddingEnd="@dimen/hint_padding"
-        android:paddingLeft="@dimen/hint_padding"
-        android:paddingRight="@dimen/hint_padding"
-        android:paddingStart="@dimen/hint_padding"
-        android:singleLine="true"/>
+    </LinearLayout>
 
-    <EditText
-        android:id="@+id/age"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/field_height"
-        android:layout_marginBottom="@dimen/fields_vertical_margin"
-        android:background="@drawable/bg_round"
-        android:hint="@string/age"
-        android:inputType="number"
-        android:maxLength="3"
-        android:paddingEnd="@dimen/hint_padding"
-        android:paddingLeft="@dimen/hint_padding"
-        android:paddingRight="@dimen/hint_padding"
-        android:paddingStart="@dimen/hint_padding"
-        android:singleLine="true"/>
-
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/field_height"
-        android:layout_marginBottom="@dimen/fields_vertical_margin"
-        android:background="@drawable/bg_round"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress"
-        android:maxLength="10"
-        android:paddingEnd="@dimen/hint_padding"
-        android:paddingLeft="@dimen/hint_padding"
-        android:paddingRight="@dimen/hint_padding"
-        android:paddingStart="@dimen/hint_padding"
-        android:singleLine="true"/>
-
-    <EditText
-        android:id="@+id/password_old"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/field_height"
-        android:layout_marginBottom="@dimen/fields_vertical_margin"
-        android:background="@drawable/bg_round"
-        android:hint="@string/password_old"
-        android:inputType="textPassword"
-        android:maxLength="10"
-        android:paddingEnd="@dimen/hint_padding"
-        android:paddingLeft="@dimen/hint_padding"
-        android:paddingRight="@dimen/hint_padding"
-        android:paddingStart="@dimen/hint_padding"
-        android:singleLine="true"/>
-
-    <EditText
-        android:id="@+id/password"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/field_height"
-        android:layout_marginBottom="@dimen/fields_vertical_margin"
-        android:background="@drawable/bg_round"
-        android:hint="@string/password"
-        android:inputType="textPassword"
-        android:maxLength="10"
-        android:paddingEnd="@dimen/hint_padding"
-        android:paddingLeft="@dimen/hint_padding"
-        android:paddingRight="@dimen/hint_padding"
-        android:paddingStart="@dimen/hint_padding"
-        android:singleLine="true"/>
-
-    <EditText
-        android:id="@+id/password_confirm"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/field_height"
-        android:layout_marginBottom="@dimen/fields_vertical_margin"
-        android:background="@drawable/bg_round"
-        android:hint="@string/password_confirm"
-        android:inputType="textPassword"
-        android:maxLength="10"
-        android:paddingEnd="@dimen/hint_padding"
-        android:paddingLeft="@dimen/hint_padding"
-        android:paddingRight="@dimen/hint_padding"
-        android:paddingStart="@dimen/hint_padding"
-        android:singleLine="true"
-        android:visibility="gone"/>
-
-    <Button
-        android:id="@+id/save"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/field_height"
-        android:background="@drawable/bg_round"
-        android:text="@string/save_button_title"
-        android:visibility="gone"/>
-
-</LinearLayout>
+</ScrollView>

@@ -81,7 +81,7 @@ public class SoundPictureFragment extends OptionsBaseFragment {
     }
 
     private void showHint() {
-        mPlayButton.setVisibility(View.GONE);
+        mPlayButton.setVisibility(View.INVISIBLE);
         mTitle.setText(mCorrectAnswer);
     }
 

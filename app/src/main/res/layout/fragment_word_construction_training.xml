@@ -42,6 +42,18 @@
 
     </FrameLayout>
 
+    <TextView
+        android:id="@+id/hint_label"
+        android:layout_weight="0.5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:textSize="@dimen/auth_title_size"
+        android:textColor="@color/colorAccent"
+        android:visibility="invisible"
+        tools:text = "A"/>
+
     <LinearLayout
         android:layout_weight="1"
         android:layout_width="match_parent"
@@ -50,7 +62,7 @@
         android:gravity="bottom|center_horizontal">
 
         <ImageView
-            android:id="@+id/answer_state_notifier"
+            android:id="@+id/right_answer_notifier"
             android:src = "@drawable/check"
             android:layout_width="@dimen/answer_state_notifier_size"
             android:layout_height="@dimen/answer_state_notifier_size"

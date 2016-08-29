@@ -5,12 +5,11 @@ import android.os.Parcelable;
 
 import com.valevich.lingvoapp.R;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class Word implements Parcelable,Translatable,Viewable,Starable {
+public class Word implements Parcelable,Translatable,Viewable,Starable,Randomized {
 
     private String mNativeText;
 
@@ -28,6 +27,8 @@ public class Word implements Parcelable,Translatable,Viewable,Starable {
         mTranslation = translation;
         mNativeText = nativeText;
     }
+
+    public Word() {}
 
     public Word(String nativeText, String translation, int imageResId) {
         mNativeText = nativeText;
@@ -158,7 +159,8 @@ public class Word implements Parcelable,Translatable,Viewable,Starable {
         ));
     }
 
-    public static Word getRandom() {
+    @Override
+    public Word getRandom() {
         return new Word("Апельсин","Orange");
     }
 
